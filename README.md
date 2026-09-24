@@ -10,8 +10,47 @@ A [Claude Code plugin](https://code.claude.com/docs/en/plugins) for one-on-one E
 - **Remembers each student** in a plain-text record file — so asking for "the next lesson for Mar" in a brand-new session picks up exactly where you left off, without re-running the interview
 - **Never repeats vocabulary** already taught to a student, and recycles older vocab into new lessons for retention
 - **Draws on a bank of proven activities** (`references/teacher-activities.md`) — role plays, debates, gallery tours, press conferences, and more — plus a generic fallback bank for anything that doesn't fit
+- **Exports a finished lesson plan as a `.docx`** on request — a lesson plan is a document you print, edit, or hand to a co-teacher, not just chat text
 
 Currently scoped to **one-on-one tutoring only**; group classes are intentionally out of scope (see `SKILL.md`).
+
+## The interview
+
+Before planning anything, the skill interviews you about the student — either **detailed** (each question asked separately) or **light** (a few bundled open-ended prompts), your choice. Either way it gathers:
+
+- Student name (free text, never a suggested/example name) and pronouns (he/him, she/her, they/them)
+- Current level (a CEFR estimate, or a description of what they can/can't do if you're not sure)
+- Location — the actual city/country (e.g. "Barcelona," "Naples"), used both to personalize content and to silently anticipate likely native-language interference errors
+- Interests, profession, hobbies
+- Goal for learning English (exam, work, travel, immigration, general fluency)
+- Session length (30 min / 60 min / other), asked separately from activity preferences
+- Activity choice — random from the proven activities list below, specific activities you already have in mind, or "show me the list first"
+- Single lesson or a multi-lesson learning path (if a path, how many lessons — you decide, the skill never suggests a number), key skills to weight, and anything to include or exclude
+
+Vocab style/count and whether to include a home assignment are asked later, only once an actual lesson is being drafted — not during this initial interview. For a returning student with an existing record, the skill skips straight to a brief check-in instead of re-running any of this.
+
+## Activity bank
+
+The skill draws primarily on this proven set of activities (`references/teacher-activities.md`) when building the Production stage of a lesson, spacing repeats out across a learning path:
+
+**Vocabulary & input** — Fresh vocabulary tied to interests, read a generated dialogue using new vocab, read a found article, describe a picture, use a short media clip, use data/charts to discuss trends
+
+**Speaking & discussion** — Speaking practice discussion questions, sentence upgrades, role play, ranking scenario (4-5 items), impossible choice scenario, mini debates, devil's advocate, inbox activity (respond to messages), press conference
+
+**Roleplay/scenario formats** — Gallery tour (describe artworks/visuals), respond to "Subway takes" in a randomly assigned tone, Hometown Hero newspaper interview
+
+If nothing on this list fits, the skill falls back to a generic activity bank (`references/activity-bank.md`) organized by skill type (grammar/vocab/speaking/listening/reading/writing).
+
+## Optional: exporting to Word
+
+Exporting a lesson plan to `.docx` uses the `docx` skill from Anthropic's [`document-skills`](https://github.com/anthropics/skills) plugin — it isn't bundled in this repo. Without it, the skill still works and just gives you the plan as markdown. To enable export:
+
+```
+/plugin marketplace add anthropics/skills
+/plugin install document-skills@anthropic-agent-skills
+```
+
+Then ask for a Word/`.docx` version after any lesson plan is generated.
 
 ## Installation
 
