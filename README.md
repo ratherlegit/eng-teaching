@@ -9,7 +9,7 @@ A [Claude Code plugin](https://code.claude.com/docs/en/plugins) for one-on-one E
 - **Generates lesson plans** with a standard structure: objectives, vocab review (recycling older words), fresh vocabulary (pitched one level above the student, personalized to their interests), warm-up, presentation/practice, 2-3 production activities to choose from, wrap-up, and an optional home assignment
 - **Remembers each student** in a plain-text record file — so asking for "the next lesson for Mar" in a brand-new session picks up exactly where you left off, without re-running the interview
 - **Never repeats vocabulary** already taught to a student, and recycles older vocab into new lessons for retention
-- **Draws on a bank of proven activities** (`references/teacher-activities.md`) — role plays, debates, gallery tours, press conferences, and more — plus a generic fallback bank for anything that doesn't fit
+- **Draws on a bank of proven activities** (`skills/eng-teaching/references/teacher-activities.md`) — role plays, debates, gallery tours, press conferences, and more — plus a generic fallback bank for anything that doesn't fit
 - **Exports a finished lesson plan as a `.docx`** on request — a lesson plan is a document you print, edit, or hand to a co-teacher, not just chat text
 
 Currently scoped to **one-on-one tutoring only**; group classes are intentionally out of scope (see `SKILL.md`).
@@ -31,7 +31,7 @@ Vocab style/count and whether to include a home assignment are asked later, only
 
 ## Activity bank
 
-The skill draws primarily on this proven set of activities (`references/teacher-activities.md`) when building the Production stage of a lesson, spacing repeats out across a learning path:
+The skill draws primarily on this proven set of activities (`skills/eng-teaching/references/teacher-activities.md`) when building the Production stage of a lesson, spacing repeats out across a learning path:
 
 **Vocabulary & input** — Fresh vocabulary tied to interests, read a generated dialogue using new vocab, read a found article, describe a picture, use a short media clip, use data/charts to discuss trends
 
@@ -39,46 +39,41 @@ The skill draws primarily on this proven set of activities (`references/teacher-
 
 **Roleplay/scenario formats** — Gallery tour (describe artworks/visuals), respond to "Subway takes" in a randomly assigned tone, Hometown Hero newspaper interview
 
-If nothing on this list fits, the skill falls back to a generic activity bank (`references/activity-bank.md`) organized by skill type (grammar/vocab/speaking/listening/reading/writing).
+If nothing on this list fits, the skill falls back to a generic activity bank (`skills/eng-teaching/references/activity-bank.md`) organized by skill type (grammar/vocab/speaking/listening/reading/writing).
 
 ## Optional: exporting to Word
 
-Exporting a lesson plan to `.docx` uses the `docx` skill from Anthropic's [`document-skills`](https://github.com/anthropics/skills) plugin — it isn't bundled in this repo. Without it, the skill still works and just gives you the plan as markdown. To enable export:
+Exporting a lesson plan to `.docx` uses the `docx` skill from Anthropic's `document-skills` plugin (in the [`anthropics/skills`](https://github.com/anthropics/skills) repo) — it isn't bundled in this repo. Without it, the skill still works and just gives you the plan as markdown. To enable export (tested against this exact command sequence):
 
 ```
-/plugin marketplace add anthropics/skills
-/plugin install document-skills@anthropic-agent-skills
+claude plugin marketplace add anthropics/skills
+claude plugin install document-skills@anthropic-agent-skills
 ```
 
 Then ask for a Word/`.docx` version after any lesson plan is generated.
 
 ## Installation
 
-This repo is a Claude Code **plugin** (not a raw skill folder) — install it directly from GitHub, no manual cloning into `~/.claude/skills/` required.
+This repo is a Claude Code **plugin** (not a raw skill folder) — install it directly from GitHub, no manual cloning into `~/.claude/skills/` required. This exact two-command sequence was tested against this repo's `.claude-plugin/marketplace.json`:
 
-**Claude Code v2.1.275+:**
 ```
-/plugin install eng-teaching --marketplace ratherlegit/eng-teaching
-```
-
-**Older Claude Code versions:**
-```
-/plugin marketplace add ratherlegit/eng-teaching
-/plugin install eng-teaching@ratherlegit-eng-teaching
+claude plugin marketplace add ratherlegit/eng-teaching
+claude plugin install eng-teaching@eng-teaching
 ```
 
-**For local development/testing** (working on this repo itself):
+**For local development/testing** (working on a clone of this repo):
 ```bash
-claude --plugin-dir ./eng-teaching
+claude plugin marketplace add /path/to/local/eng-teaching
+claude plugin install eng-teaching@eng-teaching
 ```
 
-Once installed, invoke it from Claude Code with:
+Once installed, plugin skills are namespaced as `/plugin-name:skill-name` (confirmed by running it locally):
 
 ```
-/eng-teaching
+/eng-teaching:eng-teaching
 ```
 
-or just ask Claude to plan an English lesson — the skill's description is written to trigger automatically on relevant requests.
+or just ask Claude to plan an English lesson (e.g. "plan a B1 speaking lesson for my student Mar") — the skill's description is written to trigger automatically on relevant requests too.
 
 ## Where student data lives
 
