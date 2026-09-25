@@ -18,6 +18,10 @@ Supports:
       student-facing content
     | a | b | markdown tables     -> a real Word table (bold header row, gridlines) —
       used for learning-path tables
+    1. / 2. / 3. numbered lists   -> numbered paragraphs; each separate list gets its own
+      numbering definition and restarts at 1, so consecutive numbered lists (e.g. a
+      Controlled Practice exercise followed later by an activity's own numbered steps)
+      don't continue counting from the previous one in Word
     blank lines                   -> paragraph breaks
     everything else               -> plain paragraph text
 
@@ -30,6 +34,8 @@ import sys
 try:
     from docx import Document
     from docx.shared import Pt, RGBColor, Inches
+    from docx.oxml import OxmlElement
+    from docx.oxml.ns import qn
 except ImportError:
     print(
         "python-docx is required. Install it with: pip install python-docx",
@@ -74,6 +80,92 @@ def add_inline_runs(paragraph, text, italic_default=False, color=None):
             run.font.color.rgb = color
 
 
+def _numbering_element(doc):
+    return doc.part.numbering_part.numbering_definitions._numbering
+
+
+def _get_or_create_decimal_abstract_num(doc):
+    """Return the abstractNumId of a simple decimal list definition, creating it once."""
+    numbering = _numbering_element(doc)
+    cached_id = getattr(doc, "_lesson_abstract_num_id", None)
+    if cached_id is not None:
+        return cached_id
+
+    existing_ids = [
+        int(el.get(qn("w:abstractNumId")))
+        for el in numbering.findall(qn("w:abstractNum"))
+    ]
+    abstract_id = max(existing_ids, default=-1) + 1
+
+    abstract_num = OxmlElement("w:abstractNum")
+    abstract_num.set(qn("w:abstractNumId"), str(abstract_id))
+
+    lvl = OxmlElement("w:lvl")
+    lvl.set(qn("w:ilvl"), "0")
+
+    start = OxmlElement("w:start")
+    start.set(qn("w:val"), "1")
+    lvl.append(start)
+
+    num_fmt = OxmlElement("w:numFmt")
+    num_fmt.set(qn("w:val"), "decimal")
+    lvl.append(num_fmt)
+
+    lvl_text = OxmlElement("w:lvlText")
+    lvl_text.set(qn("w:val"), "%1.")
+    lvl.append(lvl_text)
+
+    lvl_jc = OxmlElement("w:lvlJc")
+    lvl_jc.set(qn("w:val"), "left")
+    lvl.append(lvl_jc)
+
+    p_pr = OxmlElement("w:pPr")
+    ind = OxmlElement("w:ind")
+    ind.set(qn("w:left"), "720")
+    ind.set(qn("w:hanging"), "360")
+    p_pr.append(ind)
+    lvl.append(p_pr)
+
+    abstract_num.append(lvl)
+    numbering.insert(0, abstract_num)
+
+    doc._lesson_abstract_num_id = abstract_id
+    return abstract_id
+
+
+def start_new_numbered_list(doc):
+    """Create a fresh numbering definition (restarting at 1) and return its numId."""
+    numbering = _numbering_element(doc)
+    abstract_id = _get_or_create_decimal_abstract_num(doc)
+
+    existing_num_ids = [
+        int(el.get(qn("w:numId"))) for el in numbering.findall(qn("w:num"))
+    ]
+    num_id = max(existing_num_ids, default=0) + 1
+
+    num = OxmlElement("w:num")
+    num.set(qn("w:numId"), str(num_id))
+    abstract_num_id = OxmlElement("w:abstractNumId")
+    abstract_num_id.set(qn("w:val"), str(abstract_id))
+    num.append(abstract_num_id)
+    numbering.append(num)
+
+    return num_id
+
+
+def apply_numbering(paragraph, num_id):
+    """Attach a numId to a paragraph so it belongs to a specific (restarted) list."""
+    p_pr = paragraph._p.get_or_add_pPr()
+    num_pr = OxmlElement("w:numPr")
+    ilvl = OxmlElement("w:ilvl")
+    ilvl.set(qn("w:val"), "0")
+    num_id_el = OxmlElement("w:numId")
+    num_id_el.set(qn("w:val"), str(num_id))
+    num_pr.append(ilvl)
+    num_pr.append(num_id_el)
+    p_pr.append(num_pr)
+
+
 TABLE_SEPARATOR_PATTERN = re.compile(r"^\|?[\s:|-]+\|?$")
 
 
@@ -89,6 +181,7 @@ def convert(input_path, output_path):
 
     doc = Document()
     note_color = RGBColor(0x55, 0x55, 0x55)  # gray, to visually separate notes
+    current_list_num_id = None  # tracks the active numbered list, so a new list restarts at 1
 
     i = 0
     n = len(lines)
@@ -99,6 +192,10 @@ def convert(input_path, output_path):
         if not stripped:
             i += 1
             continue
+
+        is_numbered_item = bool(re.match(r"^\d+\.\s", stripped))
+        if not is_numbered_item:
+            current_list_num_id = None  # any non-numbered-item line ends the current list
 
         is_table_start = (
             stripped.startswith("|")
@@ -142,9 +239,12 @@ def convert(input_path, output_path):
         elif stripped.startswith("- ") or stripped.startswith("* "):
             p = doc.add_paragraph(style="List Bullet")
             add_inline_runs(p, stripped[2:].strip())
-        elif re.match(r"^\d+\.\s", stripped):
+        elif is_numbered_item:
+            if current_list_num_id is None:
+                current_list_num_id = start_new_numbered_list(doc)
             p = doc.add_paragraph(style="List Number")
             add_inline_runs(p, re.sub(r"^\d+\.\s", "", stripped))
+            apply_numbering(p, current_list_num_id)
         elif stripped == "---":
             doc.add_paragraph().add_run("").add_break()
         else:
