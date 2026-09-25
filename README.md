@@ -44,18 +44,30 @@ Most activities come from a bank of classroom-tested formats: role plays, debate
 
 ## Setting it up
 
-Most tutors will use one of the first two options below. Pick whichever assistant you already have.
+Most tutors will use one of the first three options below. Pick whichever matches your assistant and plan.
 
-**Whichever one you use, first grab two things from this page:**
+### Claude.ai or the Claude Desktop app, on a paid plan (simplest option)
+
+If you're on Claude Pro, Max, Team, or Enterprise, Claude has a built-in **Plugins** feature that installs this skill directly, no copying or uploading needed, and it'll pick up future updates automatically:
+
+1. Click **Customize** in the left sidebar, then open the **Plugins** tab.
+2. Click **Add**, then **Add marketplace**.
+3. Choose **Add from a repository** and enter `ratherlegit/english-tutoring`.
+4. Once it loads, find "english-tutoring" and click **Add** to install it.
+5. Start a new chat and ask for a lesson plan, e.g. *"Plan a B1 speaking lesson for my student Maria."*
+
+This currently works on claude.ai and the Claude Desktop app. If you're on the free plan, or you mainly work from the Claude mobile app, use the Projects method below instead.
+
+### Claude.ai, the Claude Desktop app, or the Claude mobile app, on any plan (including free)
+
+This uses Claude's built-in **Projects** feature instead, available on every Claude plan. It takes a bit more setup than Plugins above, since you're copying the instructions in by hand, but works everywhere, including the free plan and the mobile app.
+
+**First, grab two things from this page:**
 
 1. **The skill's instructions.** Open [`skills/english-tutoring/SKILL.md`](skills/english-tutoring/SKILL.md). Skip the short block at the very top between the two `---` lines (that's just a technical label, not part of the instructions). Select everything below it and copy it. You'll paste this text into your assistant in a moment.
 2. **The reference files.** Click the green **Code** button near the top of [this repository's main page](https://github.com/ratherlegit/english-tutoring) and choose **Download ZIP**. Unzip the downloaded file; inside you'll find a folder at `skills/english-tutoring/references/` containing five files. You'll upload those in a moment.
 
-Keep both handy, then follow whichever section below matches your assistant.
-
-### Claude.ai, the Claude Desktop app, or the Claude mobile app (most tutors)
-
-No installation. This uses Claude's built-in **Projects** feature, which is available on every Claude plan, including free:
+**Then:**
 
 1. On [claude.ai](https://claude.ai) (or in the Claude Desktop/mobile app, which use the same account), create a new **Project**, something like "English Tutoring."
 2. Open the project's settings and paste the instructions text you copied above into the **custom instructions** field.
@@ -66,11 +78,11 @@ No installation. This uses Claude's built-in **Projects** feature, which is avai
 
 ### ChatGPT
 
-Also uses no installation, via ChatGPT's **Projects** feature (available on every ChatGPT plan, including free):
+Also uses no installation, via ChatGPT's **Projects** feature (available on every ChatGPT plan, including free). If you haven't already, grab the two things described in the "First, grab two things from this page" step above (the skill's instructions and the reference files), then:
 
 1. In ChatGPT, create a new **Project**.
-2. Open its settings and paste the instructions text you copied above into the project's **instructions**.
-3. Upload the five reference files you unzipped above as the project's files.
+2. Open its settings and paste the instructions text you copied into the project's **instructions**.
+3. Upload the five reference files you unzipped as the project's files.
 4. Chat inside that project as normal, asking for lesson plans the same way as above.
 
 The same simplest-path fallback applies here too: paste the instructions text at the top of a new chat if you'd rather skip project setup.
