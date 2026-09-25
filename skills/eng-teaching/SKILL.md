@@ -24,7 +24,7 @@ This is what makes "next lesson for [student name]" work in a brand-new session 
 
 Before drafting, ask the tutor about the student — this is what turns a generic plan into one that actually fits the learner. Don't skip this for a one-off "just give me a lesson on X" request; ask briefly first, unless Step 0 found an existing record for this student.
 
-**First, ask whether they want a light or detailed interview.** Light bundles the same information into a handful of open-ended prompts; detailed asks each item as its own question. Both gather the same information — light is just faster to answer, at the cost of the tutor doing more free-text writing per prompt instead of picking from options.
+**First, ask whether they want a detailed or light interview, with detailed as the default.** Detailed asks each item as its own question; light bundles the same information into a handful of open-ended prompts. Both gather the same information — light is just faster to answer, at the cost of the tutor doing more free-text writing per prompt instead of picking from options. If the tutor doesn't express a preference, proceed with detailed.
 
 ### Detailed mode
 Ask for the following as **separate questions**, in this order — don't merge distinct pieces of information into one combined question, even when batching several questions into one round:
@@ -79,6 +79,8 @@ Rules for building the path:
 
 Once the tutor approves the path (even before any lesson is generated), save it into the student's record file (see Step 4's Student Record File section) with a Status column (all rows start "Not yet delivered"). This is what lets a future session pick up with "next lesson for [student name]" without the path having to be re-designed or re-approved.
 
+Once the path is approved, also ask the tutor whether they'd like the path table exported as a `.docx` — it's a handy reference file to save outside the chat (e.g. to share with the student or a co-teacher, or to check off lessons as they're delivered). If yes, follow Step 6 to build it. This is separate from, and in addition to, the per-lesson export offer in Step 6.
+
 ## Step 3: Pick a framework
 
 Default to **PPP (Presentation-Practice-Production)** for grammar/vocab lessons unless the user asks for something else or the goal is clearly task-based (e.g. exam prep, project work) or skills-focused (e.g. a reading/listening lesson, which fits better as pre-/during-/post-task).
@@ -95,7 +97,7 @@ Before drafting, if not already answered for this student, ask:
 - **Number of vocab words/phrases** — how many items to include (default: 6-10 if the tutor doesn't specify)
 - **Home assignment** — whether to include a take-home assignment section (default: include, unless the tutor opts out)
 - **Teacher's notes** — pedagogical rationale, timing/pacing tips, anticipated difficulties, and alternative approaches for the tutor's own reference (not shown to the student). Ask whether these should be **integrated** throughout the plan (a short note under each relevant stage), **end-only** (a single "Teacher's Notes" section after everything else), or **not included** at all. Default: **integrated** — plenty of tutors find inline notes useful, but let anyone who doesn't want them turn them off or push them to the end
-- **Student handout** — only ask this if teacher's notes are set to integrated or end-only: whether the tutor also wants a second, notes-free version of the plan suitable for handing to the student. Default: no (skip unless asked) — this is an extra deliverable, not something to generate automatically just because notes exist
+- **Student handout** — only ask this if teacher's notes are set to integrated or end-only: whether the tutor also wants a second, notes-free version of the plan suitable for handing to the student. Default: **yes**, unless the tutor opts out
 
 These only need answering once — for a single-lesson request, ask them right away as part of getting into Step 4; for a path, ask once before generating Lesson 1, then reuse the same answers for later lessons unless the tutor wants to change something for a specific one.
 
@@ -111,7 +113,7 @@ Unless the user specifies their own format, include:
 9. **Materials needed**
 10. **Timing** for each stage — non-Production stages should sum close to the class length, but the Production stage's activity options can add up to more than what's left (see "Choosing the activities" below); that's intentional headroom, not an error
 11. **Teacher's Notes** (if not turned off — see below) — either woven into each stage or collected in one closing section, per the tutor's preference
-12. **Student Handout** (only if requested, and only possible when Teacher's Notes are on) — a second, separate notes-free copy of the plan (see below)
+12. **Student Handout** (included by default whenever Teacher's Notes are on; omit only if the tutor opts out — not possible when Teacher's Notes are off) — a second, separate notes-free copy of the plan (see below)
 
 ### Vocab Review section (recycling)
 New vocabulary that's never revisited doesn't stick. Before introducing new words, spend a few minutes recycling old ones:
@@ -215,7 +217,7 @@ Write the plan as clean markdown with headers per stage and a timing next to eac
 
 ## Step 6: Export as a .docx (optional)
 
-A finished lesson plan is a document the tutor will print, edit, or hand to a co-teacher — not something that only lives as chat text. After presenting a lesson plan in markdown, offer to export it as a `.docx` file the tutor can open in Word/Google Docs and edit further. Don't export automatically — only build the file once the tutor says yes (or asks for a doc/Word file/download up front).
+A finished lesson plan — or an approved learning path table (see Step 2) — is a document the tutor will print, edit, or hand to a co-teacher, or file away for reference, not something that only lives as chat text. After presenting either one, offer to export it as a `.docx` file the tutor can open in Word/Google Docs and edit further. Don't export automatically — only build the file once the tutor says yes (or asks for a doc/Word file/download up front).
 
 **Default, works on any harness with shell access** (Codex, Cursor, Aider, Claude Code, etc.): write the finished plan to a markdown file, then run the bundled converter:
 
@@ -223,11 +225,12 @@ A finished lesson plan is a document the tutor will print, edit, or hand to a co
 python3 skills/eng-teaching/scripts/md_to_docx.py <plan>.md <output>.docx
 ```
 
-If `python-docx` isn't installed, install it first (`pip install python-docx`) and retry — it's a small, standard library, not a platform-specific plugin. The script (tested end-to-end) handles `#`/`##`/`###` headings, `**bold**`/`*italic*` inline markup, `-`/numbered lists, and `> ` blockquote lines (rendered indented, gray, and italic — use this for Teacher's Notes so they read as clearly separate from student-facing content). Write the source markdown accordingly:
+If `python-docx` isn't installed, install it first (`pip install python-docx`) and retry — it's a small, standard library, not a platform-specific plugin. The script (tested end-to-end) handles `#`/`##`/`###` headings, `**bold**`/`*italic*` inline markup, `-`/numbered lists, `> ` blockquote lines (rendered indented, gray, and italic — use this for Teacher's Notes so they read as clearly separate from student-facing content), and standard markdown tables (rendered as a real Word table with a bold header row and gridlines — use this for the learning-path table). Write the source markdown accordingly:
 - Lesson title as `#`, each stage (Vocab Review, Fresh Vocabulary, Warm-up, etc.) as `##`
 - Bold the vocab word in each `word – definition` line, italicize the example sentence
 - Prefix each Teacher's Note line with `> ` so the script styles it distinctly, whether integrated per-stage or collected at the end
+- For a learning path, write the path exactly as the `| Lesson # | ... |` markdown table already used to present it — no reformatting needed
 
 **On Claude Code specifically**, the `docx` skill (part of the `document-skills` plugin in the `anthropic-agent-skills` marketplace) is an alternative if it's already installed, and can produce more elaborate formatting via the docx-js API in its `docx-js.md` — but the bundled script above is the default since it needs no extra install and works identically everywhere.
 
-Name the file `<student-name>-lesson-<n>.docx` (or `<student-name>-<lesson-name>.docx` for a single lesson) and save it in the tutor's working directory unless they ask for elsewhere. If a student handout was also requested, name it `<student-name>-lesson-<n>-handout.docx` as a separate file.
+Name the file `<student-name>-lesson-<n>.docx` (or `<student-name>-<lesson-name>.docx` for a single lesson) and save it in the tutor's working directory unless they ask for elsewhere. If a student handout was also requested, name it `<student-name>-lesson-<n>-handout.docx` as a separate file. For a learning path table, name it `<student-name>-learning-path.docx`.

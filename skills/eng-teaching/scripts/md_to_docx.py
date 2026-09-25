@@ -16,6 +16,8 @@ Supports:
     > blockquote lines            -> distinct "note" style (italic, indented, gray)
       used for Teacher's Notes so they read as clearly separate from
       student-facing content
+    | a | b | markdown tables     -> a real Word table (bold header row, gridlines) —
+      used for learning-path tables
     blank lines                   -> paragraph breaks
     everything else               -> plain paragraph text
 
@@ -72,6 +74,15 @@ def add_inline_runs(paragraph, text, italic_default=False, color=None):
             run.font.color.rgb = color
 
 
+TABLE_SEPARATOR_PATTERN = re.compile(r"^\|?[\s:|-]+\|?$")
+
+
+def parse_table_row(line):
+    """Split a `| a | b |` row into cell strings, dropping the outer empty cells."""
+    cells = line.strip().strip("|").split("|")
+    return [c.strip() for c in cells]
+
+
 def convert(input_path, output_path):
     with open(input_path, "r", encoding="utf-8") as f:
         lines = f.read().splitlines()
@@ -79,11 +90,43 @@ def convert(input_path, output_path):
     doc = Document()
     note_color = RGBColor(0x55, 0x55, 0x55)  # gray, to visually separate notes
 
-    for raw_line in lines:
-        line = raw_line.rstrip()
+    i = 0
+    n = len(lines)
+    while i < n:
+        line = lines[i].rstrip()
         stripped = line.strip()
 
         if not stripped:
+            i += 1
+            continue
+
+        is_table_start = (
+            stripped.startswith("|")
+            and i + 1 < n
+            and TABLE_SEPARATOR_PATTERN.match(lines[i + 1].strip())
+        )
+
+        if is_table_start:
+            header_cells = parse_table_row(stripped)
+            i += 2  # skip header + separator row
+            rows = []
+            while i < n and lines[i].strip().startswith("|"):
+                rows.append(parse_table_row(lines[i].strip()))
+                i += 1
+
+            table = doc.add_table(rows=1, cols=len(header_cells))
+            table.style = "Table Grid"
+            for cell, text in zip(table.rows[0].cells, header_cells):
+                add_inline_runs(cell.paragraphs[0], text)
+                for run in cell.paragraphs[0].runs:
+                    run.bold = True
+
+            for row_cells in rows:
+                row = table.add_row()
+                for cell, text in zip(row.cells, row_cells):
+                    add_inline_runs(cell.paragraphs[0], text)
+
+            doc.add_paragraph()
             continue
 
         if stripped.startswith("### "):
@@ -107,6 +150,8 @@ def convert(input_path, output_path):
         else:
             p = doc.add_paragraph()
             add_inline_runs(p, stripped)
+
+        i += 1
 
     doc.save(output_path)
 
