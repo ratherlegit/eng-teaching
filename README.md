@@ -1,6 +1,6 @@
 # eng-teaching
 
-A [Claude Code plugin](https://code.claude.com/docs/en/plugins) for one-on-one English (ESL/EFL) tutors. It interviews you about a student, designs a multi-lesson learning path (or a single lesson), and generates classroom-ready lesson plans — with personalized vocabulary, a proven activity bank, and per-student memory so it never re-teaches the same word twice.
+An AI agent skill for one-on-one English (ESL/EFL) tutors, usable with Claude Code, OpenAI Codex, Cursor, Aider, and other AI coding-agent harnesses. It interviews you about a student, designs a multi-lesson learning path (or a single lesson), and generates classroom-ready lesson plans — with personalized vocabulary, a proven activity bank, and per-student memory so it never re-teaches the same word twice.
 
 ## What it does
 
@@ -55,9 +55,15 @@ claude plugin install document-skills@anthropic-agent-skills
 
 Then ask for a Word/`.docx` version after any lesson plan is generated.
 
-## Installation
+## Using this with other LLM harnesses (Codex, Cursor, Aider, etc.)
 
-This repo is a Claude Code **plugin** (not a raw skill folder) — install it directly from GitHub, no manual cloning into `~/.claude/skills/` required. This exact two-command sequence was tested against this repo's `.claude-plugin/marketplace.json`:
+The actual instructions in `skills/eng-teaching/SKILL.md` are plain markdown with no Claude-specific syntax, so this works with any AI coding agent, not just Claude Code. This repo includes an [`AGENTS.md`](AGENTS.md) — a convention read automatically by OpenAI Codex, Cursor, Aider, Windsurf, Gemini CLI, RooCode/Cline, and several other harnesses. With this repo checked out (or its contents copied into your project), those tools pick it up with no extra setup.
+
+For anything else — a custom system prompt, a custom-GPT instructions field, a bespoke agent — paste in `skills/eng-teaching/SKILL.md`'s body (below its YAML frontmatter) along with `skills/eng-teaching/references/`. See `AGENTS.md` for the per-platform notes, including what to do about the Claude-Code-specific `.docx` export step.
+
+## Installing on Claude Code
+
+This repo is also a Claude Code **plugin** (not a raw skill folder) — install it directly from GitHub, no manual cloning into `~/.claude/skills/` required. This exact two-command sequence was tested against this repo's `.claude-plugin/marketplace.json`:
 
 ```
 claude plugin marketplace add ratherlegit/eng-teaching
@@ -88,8 +94,10 @@ Student profiles, learning paths, and vocabulary logs are stored **outside** thi
 
 ```
 eng-teaching/
+├── AGENTS.md                         # entry point for Codex/Cursor/Aider/etc.
 ├── .claude-plugin/
-│   └── plugin.json                   # plugin manifest
+│   ├── plugin.json                   # plugin manifest (Claude Code)
+│   └── marketplace.json              # marketplace manifest (Claude Code)
 └── skills/
     └── eng-teaching/
         ├── SKILL.md                  # the skill's instructions

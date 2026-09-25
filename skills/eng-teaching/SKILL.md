@@ -213,11 +213,13 @@ Personalize using what the interview surfaced: swap generic example sentences/to
 
 Write the plan as clean markdown with headers per stage and a timing next to each. Don't pad with generic teaching theory the teacher already knows — keep it concrete and usable at the front of a classroom.
 
-## Step 6: Export as a .docx (optional)
+## Step 6: Export as a .docx (optional, Claude Code only)
 
 A finished lesson plan is a document the tutor will print, edit, or hand to a co-teacher — not something that only lives as chat text. After presenting a lesson plan in markdown, offer to export it as a `.docx` file the tutor can open in Word/Google Docs and edit further. Don't export automatically — only build the file once the tutor says yes (or asks for a doc/Word file/download up front).
 
-- Use the `docx` skill (part of the `document-skills` plugin in the `anthropic-agent-skills` marketplace) to generate the file — see its `docx-js.md` for the docx-js API. If that skill isn't installed, tell the tutor how to install it (`claude plugin marketplace add anthropics/skills` then `claude plugin install document-skills@anthropic-agent-skills`) and offer the markdown as a fallback instead of failing silently.
+This step is Claude Code–specific — it names a Claude Code plugin. On any other harness, either skip this step, or generate the `.docx` with whatever document-generation capability that harness actually has available (e.g. a local `python-docx`/`docx` library, a built-in file-export tool); if nothing is available, fall back to the markdown plan rather than failing silently.
+
+- On Claude Code: use the `docx` skill (part of the `document-skills` plugin in the `anthropic-agent-skills` marketplace) to generate the file — see its `docx-js.md` for the docx-js API. If that skill isn't installed, tell the tutor how to install it (`claude plugin marketplace add anthropics/skills` then `claude plugin install document-skills@anthropic-agent-skills`) and offer the markdown as a fallback instead of failing silently.
 - Carry over the plan's structure directly: lesson title as the document title, each stage (Vocab Review, Fresh Vocabulary, Warm-up, etc.) as a Heading, activity options and vocab items as their own paragraphs/bullets — don't flatten everything into one undifferentiated block of text.
 - Bold the vocab word in each `word – definition` line and italicize the example sentence, so the format reads clearly on the page, not just in markdown.
 - If Teacher's Notes are included, keep them visually distinct from student-facing content (e.g. italic + a different color or a shaded/boxed paragraph), whether integrated per-stage or collected at the end.

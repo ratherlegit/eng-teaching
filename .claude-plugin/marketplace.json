@@ -1,8 +1,8 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
   "name": "eng-teaching",
-  "version": "1.1.0",
-  "description": "One-on-one ESL/EFL lesson planning plugin for Claude Code.",
+  "version": "1.2.0",
+  "description": "One-on-one ESL/EFL lesson planning: tutor interview, multi-lesson learning paths, personalized vocabulary, and per-student memory.",
   "owner": {
     "name": "Zachary Rosen"
   },
