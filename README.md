@@ -1,101 +1,78 @@
 # eng-teaching
 
-An AI agent skill for one-on-one English (ESL/EFL) tutors, usable with Claude Code, OpenAI Codex, Cursor, Aider, and other AI coding-agent harnesses. It interviews you about a student, designs a multi-lesson learning path (or a single lesson), and generates classroom-ready lesson plans — with personalized vocabulary, a proven activity bank, and per-student memory so it never re-teaches the same word twice.
+**A planning assistant for one-on-one English tutors.** Tell it about your student once, and it interviews you, builds a personalized lesson (or a whole multi-lesson course), and remembers everything for next time, so you're not starting from a blank page every session.
 
-## What it does
+It works inside Claude (Claude.ai, the Claude apps, or Claude Code) and a few other AI assistants. See [Setting it up](#setting-it-up) below.
 
-- **Interviews the tutor** about the student (name, pronouns, level, location, interests, goal, session length, activity preferences) — in a **detailed** mode (each question separate) or a **light** mode (a few bundled open-ended prompts)
-- **Designs a learning path**: a lesson-by-lesson table (theme, grammar point, activities) that varies grammar and activities across the path and weights activities toward whatever skill the tutor wants to prioritize (e.g. speaking fluency)
-- **Generates lesson plans** with a standard structure: objectives, vocab review (recycling older words), fresh vocabulary (pitched one level above the student, personalized to their interests), a Warm Up Conversation (fresh life check-in questions every lesson), Grammar Focus/practice, 2-3 production activities to choose from, wrap-up, a home assignment (included by default, opt-out), and teacher's notes (integrated by default — pick end-only or off instead, and skipped for self-explanatory stages even when on)
-- **Suggested timings live in one Time Summary section**, not next to every heading — they're a flexible guide, not a schedule to follow rigidly
-- **Student handout**: whenever teacher's notes are on, a second, notes-free copy of the plan for the student is included by default (opt out if you don't want it)
-- **Remembers each student** in a plain-text record file — so asking for "the next lesson for [student name]" in a brand-new session picks up exactly where you left off, without re-running the interview
-- **Never repeats vocabulary** already taught to a student, and recycles older vocab into new lessons for retention
-- **Draws on a bank of proven activities** (`skills/eng-teaching/references/teacher-activities.md`) — role plays, debates, gallery tours, press conferences, and more — plus a generic fallback bank for anything that doesn't fit
-- **Exports a finished lesson plan as a `.docx`** on request — a lesson plan is a document you print, edit, or hand to a co-teacher, not just chat text
+## Why tutors use this
 
-Currently scoped to **one-on-one tutoring only**; group classes are intentionally out of scope (see `SKILL.md`).
+- **No more starting from scratch.** It asks about your student once (their level, interests, goals, how long your sessions are) and remembers it for every future lesson.
+- **It never forgets what you've already taught.** Every lesson checks what vocabulary this student already knows, so you're never accidentally repeating a word they learned three lessons ago.
+- **It writes almost everything for you.** Dialogues, discussion questions, role-play scenarios, reading passages: all generated fresh and tied to your student's actual interests. You almost never have to go find your own materials.
+- **It plans ahead, not just one lesson at a time.** Ask for a 10-lesson course and it lays out the whole path (themes, grammar points, activities) before writing a single lesson, so you can see where things are headed and adjust before it builds anything.
+- **You get a real, editable document.** Every lesson plan can be exported as a `.docx` file you can open in Word or Google Docs, print, tweak, or hand to a co-teacher.
+- **It knows the difference between what you need and what your student needs.** It can write pedagogical notes just for you (why an activity was chosen, what to watch out for) and, separately, a clean copy for the student with none of that on it.
+- **It picks up right where you left off.** Come back next week and say "next lesson for [student]," and it already knows their level, their path, and everything they've learned so far. No re-explaining.
 
-## The interview
+## How a session works
 
-Before planning anything, the skill interviews you about the student — either **detailed** (each question asked separately) or **light** (a few bundled open-ended prompts), your choice. Either way it gathers:
+1. **You tell it about your student.** Name, level, interests, goal, how long your sessions run. You can answer a handful of quick questions or a few short open-ended prompts, your choice.
+2. **If you want more than one lesson, it plans the whole path first.** You'll see a table of every lesson's theme and focus before anything gets written in full, so you can ask for changes.
+3. **It builds the lesson.** An objective, a warm-up conversation, a vocabulary section pitched to stretch your student a little, a grammar or skill focus, a couple of activity options for you to choose between live, a wrap-up, and (if you want one) a take-home assignment.
+4. **You can ask for a clean student copy.** A second version of the same lesson, with your private notes removed, ready to hand or send to the student.
+5. **You can export it as a Word document.** Ask for a `.docx` version any time and it'll build one you can save, print, or edit.
+6. **It remembers the student for next time.** Their profile, their course plan, and every word they've learned so far are saved automatically, so future sessions never start from zero.
 
-- Student name (free text, never a suggested/example name) and pronouns (he/him, she/her, they/them)
-- Current level (a CEFR estimate, or a description of what they can/can't do if you're not sure)
-- Location — the actual city/country (e.g. "Barcelona," "Naples"), used both to personalize content and to silently anticipate likely native-language interference errors
-- Interests, profession, hobbies
-- Goal for learning English (exam, work, travel, immigration, general fluency)
-- Session length (30 min / 60 min / other), asked separately from activity preferences
-- Activity choice — random from the proven activities list below, specific activities you already have in mind, or "show me the list first"
-- Single lesson or a multi-lesson learning path (if a path, how many lessons — you decide, the skill never suggests a number), key skills to weight, and anything to include or exclude
+## What's inside a lesson plan
 
-Vocab style/count and whether to include a home assignment are asked later, only once an actual lesson is being drafted — not during this initial interview. For a returning student with an existing record, the skill skips straight to a brief check-in instead of re-running any of this.
+- **Objective**, followed right away by a **Warm Up Conversation**: a few genuine, friendly check-in questions to open the lesson (fresh every time, never the same script twice)
+- **Vocab review**: a quick refresher on older words, so nothing taught in past lessons gets forgotten
+- **Fresh vocabulary**: new words or phrases tied to the topic, pitched to gently stretch the student above their current level
+- **Grammar Focus**: the lesson's main teaching point, with practice
+- **Production activities**: 2 to 3 options (role play, debate, discussion, and more) so you can pick or swap live depending on how the lesson is going
+- **Wrap-up**, and an optional **home assignment**
+- **A Time Summary** with suggested timings, a guide rather than a strict schedule
+- **Teacher's notes** (optional): private pointers just for you, like why an activity was picked, what might trip this student up, or timing tips. Only shown where there's genuinely something worth flagging, never padded in for its own sake.
 
-## Activity bank
+## The activities it draws from
 
-The skill draws primarily on this proven set of activities (`skills/eng-teaching/references/teacher-activities.md`) when building the Production stage of a lesson, spacing repeats out across a learning path:
+Most activities come from a bank of classroom-tested formats: role plays, debates, ranking exercises, mock press conferences, "gallery tours" of described artwork, newspaper-style interviews, and more. If nothing on that list fits the lesson, it falls back to a broader general-purpose activity bank organized by skill (grammar, speaking, listening, reading, writing).
 
-**Vocabulary & input** — Fresh vocabulary tied to interests, read a generated dialogue using new vocab, read a found article, describe a picture, use a short media clip, use data/charts to discuss trends
+**Almost everything is generated for you.** Dialogues, stories, discussion prompts, even described images or data charts are all written fresh rather than something you have to go track down. The only exceptions are a real article or a real photo, video, or audio clip, and even those are capped at one per lesson, only used when nothing generated would do the job as well (like exam prep that needs authentic text).
 
-**Speaking & discussion** — Speaking practice discussion questions, sentence upgrades, role play, ranking scenario (4-5 items), impossible choice scenario, mini debates, devil's advocate, inbox activity (respond to messages), press conference
+## Setting it up
 
-**Roleplay/scenario formats** — Gallery tour (describe artworks/visuals), respond to "Subway takes" in a randomly assigned tone, Hometown Hero newspaper interview
-
-If nothing on this list fits, the skill falls back to a generic activity bank (`skills/eng-teaching/references/activity-bank.md`) organized by skill type (grammar/vocab/speaking/listening/reading/writing).
-
-Almost everything here is **generated** (dialogues, stories, scenarios, discussion questions) rather than requiring you to go find real material — "Describe a picture," "Gallery tour," and the data/charts activity default to a vivid written description or a generated data table instead of an actual photo, artwork, or chart. Only two activities (a real article, a real media clip) inherently need you to source something yourself, and the skill caps those at one per lesson at most.
-
-## Optional: exporting to Word
-
-Works the same way on **any harness with shell access** (Codex, Cursor, Aider, Claude Code, etc.) — no plugin install needed. The skill writes the finished plan to markdown, then runs the bundled converter:
-
-```bash
-pip install python-docx   # one-time, if not already installed
-python3 skills/eng-teaching/scripts/md_to_docx.py <plan>.md <output>.docx
-```
-
-`md_to_docx.py` (tested end-to-end) converts headings, `**bold**`/`*italic*` text, bullet/numbered lists, markdown tables, and `> ` blockquote lines — used for Teacher's Notes, which render indented, gray, and italic so they read as clearly separate from student-facing content. Just ask for a Word/`.docx` version after any lesson plan is generated.
-
-If you haven't already told it a folder to save files in, the skill will ask where to save before creating anything, and it'll tell you the exact path once a file is written.
-
-On Claude Code specifically, the `docx` skill from Anthropic's `document-skills` plugin (in [`anthropics/skills`](https://github.com/anthropics/skills)) is an alternative if you already have it installed, with more elaborate formatting options — but it's not required.
-
-## Using this with other LLM harnesses (Codex, Cursor, Aider, etc.)
-
-The actual instructions in `skills/eng-teaching/SKILL.md` are plain markdown with no Claude-specific syntax, so this works with any AI coding agent, not just Claude Code — including the `.docx` export above. This repo includes an [`AGENTS.md`](AGENTS.md) — a convention read automatically by OpenAI Codex, Cursor, Aider, Windsurf, Gemini CLI, RooCode/Cline, and several other harnesses. With this repo checked out (or its contents copied into your project), those tools pick it up with no extra setup.
-
-For anything else — a custom system prompt, a custom-GPT instructions field, a bespoke agent — paste in `skills/eng-teaching/SKILL.md`'s body (below its YAML frontmatter) along with `skills/eng-teaching/references/` and `skills/eng-teaching/scripts/`. See `AGENTS.md` for the per-platform notes.
-
-## Installing on Claude Code
-
-This repo is also a Claude Code **plugin** (not a raw skill folder) — install it directly from GitHub, no manual cloning into `~/.claude/skills/` required. This exact two-command sequence was tested against this repo's `.claude-plugin/marketplace.json`:
+**If you're using Claude Code, the AI assistant that runs in a terminal/command line**, this is a plugin you can install directly:
 
 ```
 claude plugin marketplace add ratherlegit/eng-teaching
 claude plugin install eng-teaching@eng-teaching
 ```
 
-**For local development/testing** (working on a clone of this repo):
-```bash
-claude plugin marketplace add /path/to/local/eng-teaching
-claude plugin install eng-teaching@eng-teaching
-```
+Then just ask, in plain English: *"Plan a B1 speaking lesson for my student Maria."* You don't need to remember any special commands. Claude will recognize what you're asking for. (If you want to invoke it explicitly, the command is `/eng-teaching:eng-teaching`.)
 
-Once installed, plugin skills are namespaced as `/plugin-name:skill-name` (confirmed by running it locally):
+*If those two lines above don't mean anything to you, that's completely fine. This step just needs to be done once, and a technical friend or colleague can run those two commands for you in a couple of minutes. After that, using the skill is just a normal conversation.*
 
-```
-/eng-teaching:eng-teaching
-```
+**If you're using a different AI coding assistant** (OpenAI Codex, Cursor, Aider, Windsurf, Gemini CLI, and several others), this repo includes a file called `AGENTS.md` that those tools read automatically. Just have this repo open in your project and ask for a lesson plan as normal. No installation step needed.
 
-or just ask Claude to plan an English lesson (e.g. "plan a B1 speaking lesson for my student [student name]") — the skill's description is written to trigger automatically on relevant requests too.
+**If you're pasting this into something else entirely** (a custom chatbot, a GPT, anywhere else), open `skills/eng-teaching/SKILL.md` and paste its contents (everything below the top few lines) into that tool's instructions, along with the files in `skills/eng-teaching/references/`.
 
-## Where student data lives
+## Getting your lesson plan as a Word document
 
-Student profiles, learning paths, and vocabulary logs are stored **outside** this plugin's install directory, at `~/eng-teaching-records/<student-name>.md` — one plain-markdown file per student. This is deliberate: it keeps personal student data out of the plugin's files, so updating, reinstalling, or upgrading this plugin never touches or risks a tutor's actual records.
+Just ask. After any lesson plan is generated, say something like *"can I get that as a Word doc?"* The skill will ask where you'd like it saved (if it doesn't already know), then hand you a real `.docx` file you can open, edit, and print. If a student handout was made too, that comes as its own separate file. It'll always tell you exactly where the file ended up, or share it directly in the chat if there's nowhere else to put it.
 
-**Do not commit `~/eng-teaching-records/` to this repository or any other.** It's tutor-specific personal data and doesn't belong in the skill's source.
+This works the same way across every supported AI assistant. No extra plugin required.
 
-## Structure
+## Where your student's information is kept
+
+Everything about your students (their profile, their course plan, and the words they've been taught) is saved in plain text files on your own computer, at `~/eng-teaching-records/`, completely separate from the skill itself. That means updating or reinstalling the skill never touches your students' records.
+
+**If you're maintaining a copy of this repo yourself, don't upload that folder to GitHub or share it anywhere.** It's your students' personal information and shouldn't leave your computer.
+
+## For developers
+
+<details>
+<summary>Repo structure, technical details, and contributing notes</summary>
 
 ```
 eng-teaching/
@@ -116,6 +93,20 @@ eng-teaching/
             └── teacher-activities.md         # the tutor's own proven activities (customize this)
 ```
 
+**Local development/testing** (working on a clone of this repo):
+```bash
+claude plugin marketplace add /path/to/local/eng-teaching
+claude plugin install eng-teaching@eng-teaching
+```
+
+**The `.docx` export** runs `python3 skills/eng-teaching/scripts/md_to_docx.py <plan>.md <output>.docx` (requires `pip install python-docx`). It converts markdown headings, bold/italic text, bullet/numbered lists, tables, and `> ` blockquote lines (used for Teacher's Notes, rendered indented/gray/italic) into a real `.docx`. Works identically on any harness with shell access (Codex, Cursor, Aider, Claude Code, etc.), no plugin install needed. On Claude Code specifically, Anthropic's `docx` skill (from the `document-skills` plugin in [`anthropics/skills`](https://github.com/anthropics/skills)) is an alternative if already installed, with more elaborate formatting via docx-js, but the bundled script is the default since it needs no extra install.
+
+**Cross-harness support**: the actual instructions in `skills/eng-teaching/SKILL.md` are plain markdown with no Claude-specific syntax. `AGENTS.md` is a real, widely-adopted convention (see [agents.md](https://agents.md)) read automatically by OpenAI Codex, Cursor, Aider, Windsurf, Gemini CLI, RooCode/Cline, and others.
+
+Currently scoped to **one-on-one tutoring only**; group classes are intentionally out of scope (see `SKILL.md`).
+
+</details>
+
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).

@@ -106,11 +106,11 @@ These only need answering once — for a single-lesson request, ask them right a
 
 **Don't open the plan with a student-details or framework header** (e.g. a block restating the student's name/level/interests, or naming the PPP/TBL/ESA framework being used) — that's internal planning context, not something the tutor needs printed at the top of a document they'll use in front of a student. Start straight in with the lesson content.
 
-Unless the user specifies their own format, include:
+Unless the user specifies their own format, include, **in this order**:
 1. **Objective(s)** — a can-do statement ("Students will be able to...")
-2. **Vocab Review** (only from Lesson 2 of a path onward, or any returning student) — see below
-3. **Fresh Vocabulary** — always include this section (see below)
-4. **Warm Up Conversation** — activates prior knowledge, low-stakes; see below for what goes in it
+2. **Warm Up Conversation** — always comes immediately after the objective, before any vocab or content; see below for what goes in it
+3. **Vocab Review** (only from Lesson 2 of a path onward, or any returning student) — see below
+4. **Fresh Vocabulary** — always include this section (see below)
 5. **Grammar Focus** — presentation/input, controlled practice, freer practice, per the chosen framework (PPP's "Presentation" stage; use whatever this stage is called under a different framework — see `references/lesson-frameworks.md`)
 6. **Production/application** — students use the language with some autonomy, built from **several** activities per the chosen selection method (see below), not just one
 7. **Wrap-up / assessment** — quick check of the objective (not necessarily formal testing)
@@ -123,14 +123,14 @@ Unless the user specifies their own format, include:
 ### Time Summary
 Timings are suggestions the tutor can flex on mid-lesson, not a rigid schedule — so don't put a time next to every stage/activity heading throughout the plan. Instead, collect all suggested timings into one **Time Summary** section (a short list or small table, e.g. "Warm Up Conversation — ~5 min"), placed near the end of the plan alongside Materials needed. Non-Production stages should sum close to the class length; the Production stage's activity options can add up to more than what's left (see "Choosing the activities" below) — that's intentional headroom, not an error.
 
+### Warm Up Conversation section
+Always placed immediately after the Objective, before Vocab Review or any lesson content. Not a lesson-topic teaser — a short, genuine check-in on the student's life, to build rapport before the lesson content starts. Include 2-3 open-ended questions about what's actually going on for them, in the spirit of "Any highlights from your week?" and "Anything you're looking forward to in the next couple of weeks?" — **write fresh questions for every lesson** (never repeat the same wording lesson to lesson) and vary the angle (week just past, week ahead, a specific interest they mentioned, a follow-up on something from a prior lesson if the record file shows one worth revisiting). Format the questions as a bulleted list, not a paragraph — this is the format to carry into the Student Handout too (see below).
+
 ### Vocab Review section (recycling)
 New vocabulary that's never revisited doesn't stick. Before introducing new words, spend a few minutes recycling old ones:
 - Pull 2-4 items from the student's Vocabulary Log (in the record file) — prioritize items from lessons that are neither the most recent one (too fresh to need review yet) nor ones already reviewed multiple times, so review rotates through everything taught rather than only ever touching the last lesson's words
 - A quick format works fine: a short prompt sentence with the word blanked out, or "use this word in a sentence about..." tied back to the student's interests
 - Skip this section for a student's first-ever lesson (nothing to review yet)
-
-### Warm Up Conversation section
-Not a lesson-topic teaser — a short, genuine check-in on the student's life, to build rapport before the lesson content starts. Include 2-3 open-ended questions about what's actually going on for them, in the spirit of "Any highlights from your week?" and "Anything you're looking forward to in the next couple of weeks?" — **write fresh questions for every lesson** (never repeat the same wording lesson to lesson) and vary the angle (week just past, week ahead, a specific interest they mentioned, a follow-up on something from a prior lesson if the record file shows one worth revisiting). Format the questions as a bulleted list, not a paragraph — this is the format to carry into the Student Handout too (see below).
 
 ### Fresh Vocabulary section
 Every lesson gets a standalone new-vocabulary section, not just vocab folded into the presentation stage:
@@ -161,7 +161,7 @@ If the tutor opted in, produce a second copy of the plan after the main one. **T
 - **Materials needed**
 - **Time Summary**
 
-Nothing else changes. Every other section carries over as-is: Vocab Review, Fresh Vocabulary, Warm Up Conversation (including its bulleted questions, unchanged), Grammar Focus, every Production activity's full instructions, Wrap-up, Home Assignment. Since activity instructions are already written addressed to the student (see "Choosing the activities" above), there's no rephrasing to do — copy the content over and delete only the three tutor-only sections.
+Nothing else changes. Every other section carries over as-is, in the same order: Warm Up Conversation (including its bulleted questions, unchanged), Vocab Review, Fresh Vocabulary, Grammar Focus, every Production activity's full instructions, Wrap-up, Home Assignment. Since activity instructions are already written addressed to the student (see "Choosing the activities" above), there's no rephrasing to do — copy the content over and delete only the three tutor-only sections.
 
 Label it plainly with just the lesson name (e.g. "## <Lesson Name> — Student Handout") — **don't** add any parenthetical or caption describing what was stripped out (e.g. never write something like "(Teacher's notes and Materials removed)"); the student should never see a trace of what the tutor-only version contained.
 
@@ -252,7 +252,7 @@ python3 skills/eng-teaching/scripts/md_to_docx.py <plan>.md <output>.docx
 ```
 
 If `python-docx` isn't installed, install it first (`pip install python-docx`) and retry — it's a small, standard library, not a platform-specific plugin. The script (tested end-to-end) handles `#`/`##`/`###` headings, `**bold**`/`*italic*` inline markup, `-`/numbered lists, `> ` blockquote lines (rendered indented, gray, and italic — use this for Teacher's Notes so they read as clearly separate from student-facing content), and standard markdown tables (rendered as a real Word table with a bold header row and gridlines — use this for the learning-path table). Write the source markdown accordingly:
-- Lesson title as `#`, each stage (Vocab Review, Fresh Vocabulary, Warm Up Conversation, etc.) as `##`
+- Lesson title as `#`, each stage (Warm Up Conversation, Vocab Review, Fresh Vocabulary, etc.) as `##`
 - Bold the vocab word in each `word – definition` line, italicize the example sentence
 - Prefix each Teacher's Note line with `> ` so the script styles it distinctly, whether integrated per-stage or collected at the end
 - For a learning path, write the path exactly as the `| Lesson # | ... |` markdown table already used to present it — no reformatting needed
