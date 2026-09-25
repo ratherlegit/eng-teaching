@@ -92,7 +92,7 @@ If this lesson comes from an approved learning path, use that row's theme, gramm
 Before drafting, if not already answered for this student, ask:
 - **Vocab constraint** — any preference for the fresh vocabulary section: phrasal verbs specifically, a certain part of speech (nouns, adjectives, etc.), or no constraint (default: mixed, chosen to fit the topic/interest)
 - **Number of vocab words/phrases** — how many items to include (default: 6-10 if the tutor doesn't specify)
-- **Home assignment** — whether to include an optional take-home assignment section (default: skip unless asked)
+- **Home assignment** — whether to include a take-home assignment section (default: include, unless the tutor opts out)
 
 These only need answering once — for a single-lesson request, ask them right away as part of getting into Step 4; for a path, ask once before generating Lesson 1, then reuse the same answers for later lessons unless the tutor wants to change something for a specific one.
 
@@ -104,7 +104,7 @@ Unless the user specifies their own format, include:
 5. **Main stage(s)** — presentation/input, controlled practice, freer practice, per the chosen framework
 6. **Production/application** — students use the language with some autonomy, built from **several** activities per the chosen selection method (see below), not just one
 7. **Wrap-up / assessment** — quick check of the objective (not necessarily formal testing)
-8. **Home Assignment** — only if the tutor opted in during the interview
+8. **Home Assignment** — included by default; omit only if the tutor opted out during the interview
 9. **Materials needed**
 10. **Timing** for each stage — non-Production stages should sum close to the class length, but the Production stage's activity options can add up to more than what's left (see "Choosing the activities" below); that's intentional headroom, not an error
 
