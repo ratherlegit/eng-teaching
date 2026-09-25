@@ -52,14 +52,15 @@ Claude has a built-in **Plugins** feature, available on every plan including fre
 1. Click your account name in the bottom left, then **Settings**.
 2. Open the **Plugins** tab.
 3. Click **Add**, then **Add a marketplace**.
-4. Enter `ratherlegit/english-tutoring` and confirm.
-5. Once it loads, find "english-tutoring" and click **Add** to install it.
+4. Enter `ratherlegit/english-tutoring` and confirm. This adds the marketplace, it doesn't install the plugin yet.
+5. Still on the **Plugins** tab, look for a search icon and search `english-tutoring`, then click **Add** on the result to actually install it.
 
 **On the Claude Desktop app:**
 1. Click **Customize** in the left sidebar, then open the **Plugins** tab.
 2. Click **Add**, then **Add marketplace**.
-3. Choose **Add from a repository** and enter `ratherlegit/english-tutoring`.
-4. Once it loads, find "english-tutoring" and click **Add** to install it.
+3. Choose **Add from a repository** and enter `ratherlegit/english-tutoring`, then confirm. This adds the marketplace, it doesn't install the plugin yet.
+4. Still on the **Plugins** tab, click the magnifying glass icon to search, and type `english-tutoring`.
+5. Click **Add** on the result to actually install it.
 
 Once it's installed, type /english-tutoring to get the tool started. 
 
