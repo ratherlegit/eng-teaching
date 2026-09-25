@@ -213,14 +213,21 @@ Personalize using what the interview surfaced: swap generic example sentences/to
 
 Write the plan as clean markdown with headers per stage and a timing next to each. Don't pad with generic teaching theory the teacher already knows — keep it concrete and usable at the front of a classroom.
 
-## Step 6: Export as a .docx (optional, Claude Code only)
+## Step 6: Export as a .docx (optional)
 
 A finished lesson plan is a document the tutor will print, edit, or hand to a co-teacher — not something that only lives as chat text. After presenting a lesson plan in markdown, offer to export it as a `.docx` file the tutor can open in Word/Google Docs and edit further. Don't export automatically — only build the file once the tutor says yes (or asks for a doc/Word file/download up front).
 
-This step is Claude Code–specific — it names a Claude Code plugin. On any other harness, either skip this step, or generate the `.docx` with whatever document-generation capability that harness actually has available (e.g. a local `python-docx`/`docx` library, a built-in file-export tool); if nothing is available, fall back to the markdown plan rather than failing silently.
+**Default, works on any harness with shell access** (Codex, Cursor, Aider, Claude Code, etc.): write the finished plan to a markdown file, then run the bundled converter:
 
-- On Claude Code: use the `docx` skill (part of the `document-skills` plugin in the `anthropic-agent-skills` marketplace) to generate the file — see its `docx-js.md` for the docx-js API. If that skill isn't installed, tell the tutor how to install it (`claude plugin marketplace add anthropics/skills` then `claude plugin install document-skills@anthropic-agent-skills`) and offer the markdown as a fallback instead of failing silently.
-- Carry over the plan's structure directly: lesson title as the document title, each stage (Vocab Review, Fresh Vocabulary, Warm-up, etc.) as a Heading, activity options and vocab items as their own paragraphs/bullets — don't flatten everything into one undifferentiated block of text.
-- Bold the vocab word in each `word – definition` line and italicize the example sentence, so the format reads clearly on the page, not just in markdown.
-- If Teacher's Notes are included, keep them visually distinct from student-facing content (e.g. italic + a different color or a shaded/boxed paragraph), whether integrated per-stage or collected at the end.
-- Name the file `<student-name>-lesson-<n>.docx` (or `<student-name>-<lesson-name>.docx` for a single lesson) and save it in the tutor's working directory unless they ask for elsewhere. If a student handout was also requested, name it `<student-name>-lesson-<n>-handout.docx` as a separate file.
+```bash
+python3 skills/eng-teaching/scripts/md_to_docx.py <plan>.md <output>.docx
+```
+
+If `python-docx` isn't installed, install it first (`pip install python-docx`) and retry — it's a small, standard library, not a platform-specific plugin. The script (tested end-to-end) handles `#`/`##`/`###` headings, `**bold**`/`*italic*` inline markup, `-`/numbered lists, and `> ` blockquote lines (rendered indented, gray, and italic — use this for Teacher's Notes so they read as clearly separate from student-facing content). Write the source markdown accordingly:
+- Lesson title as `#`, each stage (Vocab Review, Fresh Vocabulary, Warm-up, etc.) as `##`
+- Bold the vocab word in each `word – definition` line, italicize the example sentence
+- Prefix each Teacher's Note line with `> ` so the script styles it distinctly, whether integrated per-stage or collected at the end
+
+**On Claude Code specifically**, the `docx` skill (part of the `document-skills` plugin in the `anthropic-agent-skills` marketplace) is an alternative if it's already installed, and can produce more elaborate formatting via the docx-js API in its `docx-js.md` — but the bundled script above is the default since it needs no extra install and works identically everywhere.
+
+Name the file `<student-name>-lesson-<n>.docx` (or `<student-name>-<lesson-name>.docx` for a single lesson) and save it in the tutor's working directory unless they ask for elsewhere. If a student handout was also requested, name it `<student-name>-lesson-<n>-handout.docx` as a separate file.

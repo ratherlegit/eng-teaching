@@ -46,20 +46,22 @@ Almost everything here is **generated** (dialogues, stories, scenarios, discussi
 
 ## Optional: exporting to Word
 
-Exporting a lesson plan to `.docx` uses the `docx` skill from Anthropic's `document-skills` plugin (in the [`anthropics/skills`](https://github.com/anthropics/skills) repo) — it isn't bundled in this repo. Without it, the skill still works and just gives you the plan as markdown. To enable export (tested against this exact command sequence):
+Works the same way on **any harness with shell access** (Codex, Cursor, Aider, Claude Code, etc.) — no plugin install needed. The skill writes the finished plan to markdown, then runs the bundled converter:
 
-```
-claude plugin marketplace add anthropics/skills
-claude plugin install document-skills@anthropic-agent-skills
+```bash
+pip install python-docx   # one-time, if not already installed
+python3 skills/eng-teaching/scripts/md_to_docx.py <plan>.md <output>.docx
 ```
 
-Then ask for a Word/`.docx` version after any lesson plan is generated.
+`md_to_docx.py` (tested end-to-end) converts headings, `**bold**`/`*italic*` text, bullet/numbered lists, and `> ` blockquote lines — used for Teacher's Notes, which render indented, gray, and italic so they read as clearly separate from student-facing content. Just ask for a Word/`.docx` version after any lesson plan is generated.
+
+On Claude Code specifically, the `docx` skill from Anthropic's `document-skills` plugin (in [`anthropics/skills`](https://github.com/anthropics/skills)) is an alternative if you already have it installed, with more elaborate formatting options — but it's not required.
 
 ## Using this with other LLM harnesses (Codex, Cursor, Aider, etc.)
 
-The actual instructions in `skills/eng-teaching/SKILL.md` are plain markdown with no Claude-specific syntax, so this works with any AI coding agent, not just Claude Code. This repo includes an [`AGENTS.md`](AGENTS.md) — a convention read automatically by OpenAI Codex, Cursor, Aider, Windsurf, Gemini CLI, RooCode/Cline, and several other harnesses. With this repo checked out (or its contents copied into your project), those tools pick it up with no extra setup.
+The actual instructions in `skills/eng-teaching/SKILL.md` are plain markdown with no Claude-specific syntax, so this works with any AI coding agent, not just Claude Code — including the `.docx` export above. This repo includes an [`AGENTS.md`](AGENTS.md) — a convention read automatically by OpenAI Codex, Cursor, Aider, Windsurf, Gemini CLI, RooCode/Cline, and several other harnesses. With this repo checked out (or its contents copied into your project), those tools pick it up with no extra setup.
 
-For anything else — a custom system prompt, a custom-GPT instructions field, a bespoke agent — paste in `skills/eng-teaching/SKILL.md`'s body (below its YAML frontmatter) along with `skills/eng-teaching/references/`. See `AGENTS.md` for the per-platform notes, including what to do about the Claude-Code-specific `.docx` export step.
+For anything else — a custom system prompt, a custom-GPT instructions field, a bespoke agent — paste in `skills/eng-teaching/SKILL.md`'s body (below its YAML frontmatter) along with `skills/eng-teaching/references/` and `skills/eng-teaching/scripts/`. See `AGENTS.md` for the per-platform notes.
 
 ## Installing on Claude Code
 
@@ -101,6 +103,8 @@ eng-teaching/
 └── skills/
     └── eng-teaching/
         ├── SKILL.md                  # the skill's instructions
+        ├── scripts/
+        │   └── md_to_docx.py          # harness-agnostic markdown -> .docx converter
         └── references/
             ├── student-interview.md          # interview question rationale + L1-interference cheat sheet
             ├── cefr-levels.md                # CEFR level calibration (A1-C2)

@@ -7,9 +7,9 @@ An ESL/EFL lesson-planning agent: interviews a tutor about a student, designs a 
 - `skills/eng-teaching/references/` — CEFR calibration, lesson frameworks, the proven activity bank, and interview rationale
 - `~/eng-teaching-records/` — where per-student profiles, learning paths, and vocab logs are read from and written to (create it if it doesn't exist). This lives outside the repo/skill directory on purpose, so it survives updates to this repo — see Step 0 in `SKILL.md`.
 
-One section, **Step 6: Export as a .docx**, names a specific plugin available on Claude Code. On any other harness: skip that step, or substitute whatever document-generation capability is actually available in that environment (a local `docx`/`python-docx` library, a built-in export tool) — the rest of the workflow doesn't depend on it.
+**Step 6: Export as a .docx** works on any harness with shell access: it runs the bundled `skills/eng-teaching/scripts/md_to_docx.py` script (requires `pip install python-docx`, tested end-to-end) to convert the finished plan into a real `.docx` file — no platform-specific plugin required.
 
 **Platform notes:**
 - **Codex, Aider, Cursor, Windsurf, RooCode/Cline, Gemini CLI, and other AGENTS.md-reading tools**: no setup needed — just have this repo checked out or open in the project, and follow `skills/eng-teaching/SKILL.md` as instructed above.
 - **Claude Code**: install as a plugin instead (see `README.md`) — Claude Code plugins are namespaced and versioned, which this file's convention doesn't provide.
-- **Anything else** (a custom system prompt, a custom-GPT instructions field, a bespoke agent framework): paste in the body of `skills/eng-teaching/SKILL.md` (everything below its YAML frontmatter) directly, along with the contents of `skills/eng-teaching/references/`.
+- **Anything else** (a custom system prompt, a custom-GPT instructions field, a bespoke agent framework): paste in the body of `skills/eng-teaching/SKILL.md` (everything below its YAML frontmatter) directly, along with the contents of `skills/eng-teaching/references/`. The `.docx` export step needs shell/code-execution access to run the script — without it, the plan is still fully usable as markdown.
