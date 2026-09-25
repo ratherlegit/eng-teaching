@@ -73,7 +73,7 @@ The same simplest-path fallback applies here too: paste `SKILL.md`'s contents at
 If you use Claude Code, the AI assistant that runs in a terminal/command line, this is a plugin you can install directly:
 
 ```
-claude plugin marketplace add ratherlegit/eng-teaching
+claude plugin marketplace add ratherlegit/english-tutoring
 claude plugin install english-tutoring@english-tutoring
 ```
 
@@ -87,11 +87,11 @@ This repo includes a file called `AGENTS.md`, which Codex reads automatically. N
 
 1. **Get the repo onto your computer.** If you don't already have it, clone it:
    ```
-   git clone https://github.com/ratherlegit/eng-teaching.git
-   cd eng-teaching
+   git clone https://github.com/ratherlegit/english-tutoring.git
+   cd english-tutoring
    ```
-   (No git experience? Downloading the ZIP from the green "Code" button on the [GitHub page](https://github.com/ratherlegit/eng-teaching) and unzipping it works just as well.)
-2. **Open that folder in Codex** (in the terminal, `codex` from inside the `eng-teaching` folder, or open the folder in whichever Codex surface you use). Codex reads `AGENTS.md` at the project root automatically when it starts.
+   (No git experience? Downloading the ZIP from the green "Code" button on the [GitHub page](https://github.com/ratherlegit/english-tutoring) and unzipping it works just as well.)
+2. **Open that folder in Codex** (in the terminal, `codex` from inside the `english-tutoring` folder, or open the folder in whichever Codex surface you use). Codex reads `AGENTS.md` at the project root automatically when it starts.
 3. **Just ask**, in plain English: *"Plan a B1 speaking lesson for my student Maria."* Codex will follow the instructions in `AGENTS.md`, which point it to the rest of the skill.
 4. Student records still save to `~/eng-teaching-records/` on your computer, same as every other setup here.
 
@@ -119,7 +119,7 @@ Everything about your students (their profile, their course plan, and the words 
 <summary>Repo structure, technical details, and contributing notes</summary>
 
 ```
-eng-teaching/
+english-tutoring/
 ├── AGENTS.md                         # entry point for Codex/Cursor/Aider/etc.
 ├── .claude-plugin/
 │   ├── plugin.json                   # plugin manifest (Claude Code)
@@ -139,7 +139,7 @@ eng-teaching/
 
 **Local development/testing** (working on a clone of this repo):
 ```bash
-claude plugin marketplace add /path/to/local/eng-teaching
+claude plugin marketplace add /path/to/local/english-tutoring
 claude plugin install english-tutoring@english-tutoring
 ```
 
