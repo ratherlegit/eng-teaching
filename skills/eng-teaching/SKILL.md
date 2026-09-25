@@ -93,6 +93,7 @@ Before drafting, if not already answered for this student, ask:
 - **Vocab constraint** — any preference for the fresh vocabulary section: phrasal verbs specifically, a certain part of speech (nouns, adjectives, etc.), or no constraint (default: mixed, chosen to fit the topic/interest)
 - **Number of vocab words/phrases** — how many items to include (default: 6-10 if the tutor doesn't specify)
 - **Home assignment** — whether to include a take-home assignment section (default: include, unless the tutor opts out)
+- **Teacher's notes** — pedagogical rationale, timing/pacing tips, anticipated difficulties, and alternative approaches for the tutor's own reference (not shown to the student). Ask whether these should be **integrated** throughout the plan (a short note under each relevant stage), **end-only** (a single "Teacher's Notes" section after everything else), or **not included** at all. Default: **integrated** — plenty of tutors find inline notes useful, but let anyone who doesn't want them turn them off or push them to the end
 
 These only need answering once — for a single-lesson request, ask them right away as part of getting into Step 4; for a path, ask once before generating Lesson 1, then reuse the same answers for later lessons unless the tutor wants to change something for a specific one.
 
@@ -107,6 +108,7 @@ Unless the user specifies their own format, include:
 8. **Home Assignment** — included by default; omit only if the tutor opted out during the interview
 9. **Materials needed**
 10. **Timing** for each stage — non-Production stages should sum close to the class length, but the Production stage's activity options can add up to more than what's left (see "Choosing the activities" below); that's intentional headroom, not an error
+11. **Teacher's Notes** (if not turned off — see below) — either woven into each stage or collected in one closing section, per the tutor's preference
 
 ### Vocab Review section (recycling)
 New vocabulary that's never revisited doesn't stick. Before introducing new words, spend a few minutes recycling old ones:
@@ -129,6 +131,12 @@ Example: example sentence
 ```
 Use an en dash (–) between word and definition, and the example sentence must connect to the lesson's theme/the student's interests, not be a generic textbook sentence.
 
+### Teacher's Notes
+These are for the tutor only — never phrase them as if speaking to the student. Keep each note short (1-2 sentences): pacing/timing guidance, why a stage or activity was chosen, a likely sticking point for this student specifically (e.g. an anticipated L1-interference error, a grammar point they've struggled with before), or a quick alternative if something isn't landing.
+- **Integrated** (default): add a brief *Teacher's note:* line (italicized or otherwise visually distinct from the student-facing content) directly under the relevant stage — e.g. a note under Fresh Vocabulary about why this constraint was chosen, or under an activity option about which one to pick if time is short
+- **End-only**: skip inline notes entirely and instead add a single "## Teacher's Notes" section as the last part of the plan, with one short bullet per stage that has something worth flagging — don't force a bullet for every stage if there's nothing useful to say
+- **Not included**: omit teacher's notes entirely — don't sneak pedagogical asides into stage descriptions instead
+
 ### Student Record File (profile, path progress, and vocab log)
 Maintain one file per student at `~/eng-teaching-records/<student-name-slug>.md` (lowercase, hyphens for spaces, e.g. `maria-garcia.md`) — **not** inside the skill's own directory (see Step 0 for why). This is the single source of truth that lets a future session say "next lesson for Mar" without re-running Step 1, and lets vocab stay genuinely new lesson over lesson. It has three parts:
 
@@ -146,6 +154,7 @@ Maintain one file per student at `~/eng-teaching-records/<student-name-slug>.md`
 - Vocab constraint: ...
 - Vocab count: ...
 - Home assignment: yes/no
+- Teacher's notes: integrated/end-only/none
 - Key skills weighting: ...
 - Exclusions: ...
 
@@ -196,4 +205,5 @@ A finished lesson plan is a document the tutor will print, edit, or hand to a co
 - Use the `docx` skill (part of the `document-skills` plugin in the `anthropic-agent-skills` marketplace) to generate the file — see its `docx-js.md` for the docx-js API. If that skill isn't installed, tell the tutor how to install it (`claude plugin marketplace add anthropics/skills` then `claude plugin install document-skills@anthropic-agent-skills`) and offer the markdown as a fallback instead of failing silently.
 - Carry over the plan's structure directly: lesson title as the document title, each stage (Vocab Review, Fresh Vocabulary, Warm-up, etc.) as a Heading, activity options and vocab items as their own paragraphs/bullets — don't flatten everything into one undifferentiated block of text.
 - Bold the vocab word in each `word – definition` line and italicize the example sentence, so the format reads clearly on the page, not just in markdown.
+- If Teacher's Notes are included, keep them visually distinct from student-facing content (e.g. italic + a different color or a shaded/boxed paragraph), whether integrated per-stage or collected at the end.
 - Name the file `<student-name>-lesson-<n>.docx` (or `<student-name>-<lesson-name>.docx` for a single lesson) and save it in the tutor's working directory unless they ask for elsewhere.
