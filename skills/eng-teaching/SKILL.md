@@ -103,23 +103,29 @@ These only need answering once — for a single-lesson request, ask them right a
 
 Unless the user specifies their own format, include:
 1. **Objective(s)** — a can-do statement ("Students will be able to...")
-2. **Vocab Review** (2-5 min, only from Lesson 2 of a path onward, or any returning student) — see below
+2. **Vocab Review** (only from Lesson 2 of a path onward, or any returning student) — see below
 3. **Fresh Vocabulary** — always include this section (see below)
-4. **Warm-up** (5-10 min) — activates prior knowledge, low-stakes
-5. **Main stage(s)** — presentation/input, controlled practice, freer practice, per the chosen framework
+4. **Warm Up Conversation** — activates prior knowledge, low-stakes; see below for what goes in it
+5. **Grammar Focus** — presentation/input, controlled practice, freer practice, per the chosen framework (PPP's "Presentation" stage; use whatever this stage is called under a different framework — see `references/lesson-frameworks.md`)
 6. **Production/application** — students use the language with some autonomy, built from **several** activities per the chosen selection method (see below), not just one
 7. **Wrap-up / assessment** — quick check of the objective (not necessarily formal testing)
 8. **Home Assignment** — included by default; omit only if the tutor opted out during the interview
 9. **Materials needed**
-10. **Timing** for each stage — non-Production stages should sum close to the class length, but the Production stage's activity options can add up to more than what's left (see "Choosing the activities" below); that's intentional headroom, not an error
-11. **Teacher's Notes** (if not turned off — see below) — either woven into each stage or collected in one closing section, per the tutor's preference
+10. **Time Summary** — a single section, not per-stage headings (see below)
+11. **Teacher's Notes** (if not turned off — see below) — either woven into the stages that have one, or collected in one closing section, per the tutor's preference
 12. **Student Handout** (included by default whenever Teacher's Notes are on; omit only if the tutor opts out — not possible when Teacher's Notes are off) — a second, separate notes-free copy of the plan (see below)
+
+### Time Summary
+Timings are suggestions the tutor can flex on mid-lesson, not a rigid schedule — so don't put a time next to every stage/activity heading throughout the plan. Instead, collect all suggested timings into one **Time Summary** section (a short list or small table, e.g. "Warm Up Conversation — ~5 min"), placed near the end of the plan alongside Materials needed. Non-Production stages should sum close to the class length; the Production stage's activity options can add up to more than what's left (see "Choosing the activities" below) — that's intentional headroom, not an error.
 
 ### Vocab Review section (recycling)
 New vocabulary that's never revisited doesn't stick. Before introducing new words, spend a few minutes recycling old ones:
 - Pull 2-4 items from the student's Vocabulary Log (in the record file) — prioritize items from lessons that are neither the most recent one (too fresh to need review yet) nor ones already reviewed multiple times, so review rotates through everything taught rather than only ever touching the last lesson's words
 - A quick format works fine: a short prompt sentence with the word blanked out, or "use this word in a sentence about..." tied back to the student's interests
 - Skip this section for a student's first-ever lesson (nothing to review yet)
+
+### Warm Up Conversation section
+Not a lesson-topic teaser — a short, genuine check-in on the student's life, to build rapport before the lesson content starts. Include 2-3 open-ended questions about what's actually going on for them, in the spirit of "Any highlights from your week?" and "Anything you're looking forward to in the next couple of weeks?" — **write fresh questions for every lesson** (never repeat the same wording lesson to lesson) and vary the angle (week just past, week ahead, a specific interest they mentioned, a follow-up on something from a prior lesson if the record file shows one worth revisiting).
 
 ### Fresh Vocabulary section
 Every lesson gets a standalone new-vocabulary section, not just vocab folded into the presentation stage:
@@ -138,17 +144,19 @@ Use an en dash (–) between word and definition, and the example sentence must 
 
 ### Teacher's Notes
 These are for the tutor only — never phrase them as if speaking to the student. Keep each note short (1-2 sentences): pacing/timing guidance, why a stage or activity was chosen, a likely sticking point for this student specifically (e.g. an anticipated L1-interference error, a grammar point they've struggled with before), or a quick alternative if something isn't landing.
-- **Integrated** (default): add a brief *Teacher's note:* line (italicized or otherwise visually distinct from the student-facing content) directly under the relevant stage — e.g. a note under Fresh Vocabulary about why this constraint was chosen, or under an activity option about which one to pick if time is short
+
+**Not every stage needs one.** A note only earns its place if it says something the tutor couldn't already infer from the heading — skip self-explanatory stages like Warm Up Conversation or Wrap-up unless there's genuinely something specific to flag for this student. Grammar Focus, Fresh Vocabulary, and the Production activity options are the stages most likely to have something worth noting (a rationale, an anticipated difficulty, a timing call); don't pad the rest just to have a note under every heading.
+- **Integrated** (default): add a brief *Teacher's note:* line (italicized or otherwise visually distinct from the student-facing content) directly under the stages that have one — e.g. a note under Fresh Vocabulary about why this constraint was chosen, or under an activity option about which one to pick if time is short
 - **End-only**: skip inline notes entirely and instead add a single "## Teacher's Notes" section as the last part of the plan, with one short bullet per stage that has something worth flagging — don't force a bullet for every stage if there's nothing useful to say
 - **Not included**: omit teacher's notes entirely — don't sneak pedagogical asides into stage descriptions instead
 
 ### Student handout (optional)
-If the tutor opted in, produce a second copy of the plan after the main one, stripped of anything tutor-only:
+If the tutor opted in, produce a second copy of the plan after the main one, stripped of anything tutor-only. This is meant to be genuinely export-ready to hand or send straight to the student — not a copy with a visible note about what got removed:
 - Remove all Teacher's Notes, wherever they appear (inline or in the closing section)
-- Remove **Materials needed** (that's for the tutor, not the student)
-- Keep everything the student would actually see or do: Fresh Vocabulary, Warm-up, Main stage(s), Production activities, Wrap-up, Home Assignment
+- Remove **Materials needed** and the **Time Summary** (both are for the tutor, not the student)
+- Keep everything the student would actually see or do: Fresh Vocabulary, Warm Up Conversation, Grammar Focus, Production activities, Wrap-up, Home Assignment
 - Vocab Review is fine to keep — it's a review task for the student, not a tutor-only note
-- Label it clearly (e.g. "## Student Handout — <Lesson Name>") so it's obviously the second, separate copy, not a continuation of the main plan
+- Label it plainly with just the lesson name (e.g. "## <Lesson Name> — Student Handout") — **don't** add any parenthetical or caption describing what was stripped out (e.g. never write something like "(Teacher's notes and Materials removed)"); the student should never see a trace of what the tutor-only version contained
 
 If exporting to `.docx` (Step 6) and a handout was requested, export both as separate files rather than combining them into one document.
 
@@ -197,9 +205,9 @@ Include **2-3 activities** in the Production/application stage, not a single fix
 - **Specific**: use the named activity/activities as given; if the tutor only named one, add 1-2 more (random or judgment-based) so there are still options to fill the time
 - **Tutor's judgment / unspecified**: default to `references/teacher-activities.md` first since these are proven-effective for this tutor; fall back to `references/activity-bank.md` only if nothing on the teacher's list fits the lesson's goal
 
-**Keep external-material dependence low.** Most activities generate entirely from text (dialogues, stories, scenarios, discussion questions) and need nothing beyond the plan itself — default to these. Only include **at most 1 activity per lesson** that requires the tutor to source real external material (a found article, a real media clip — the two ⚑-marked entries in `references/teacher-activities.md`), and only when it's clearly the best fit for the goal (e.g. exam prep needing authentic text) or the tutor specifically asked for one. Activities that used to imply a real image or chart (Describe a picture, Gallery tour, data/charts discussion) are generated as vivid written descriptions or text-formatted data by default — see their entries in `references/teacher-activities.md` — so they don't count against this cap unless the tutor wants to supply a real image/chart instead.
+**Generate almost all lesson content yourself, especially text.** The whole point is a realistic, usable lesson without the tutor having to go dig up materials. Dialogues, stories, scenarios, discussion questions, data tables, described images/charts — write all of it fresh, tied to the student's interests and level, rather than pointing the tutor at something to find. Only include **at most 1 activity per lesson** that requires the tutor to source real external material — in practice, that's an occasional real photo, video, or audio clip, or (rarely, for authentic-text needs like exam prep) a real article; the two ⚑-marked entries in `references/teacher-activities.md` — and only when it's clearly the best fit for the goal or the tutor specifically asked for one. Activities that used to imply a real image or chart (Describe a picture, Gallery tour, data/charts discussion) are generated as vivid written descriptions or text-formatted data by default — see their entries in `references/teacher-activities.md` — so they don't count against this cap unless the tutor wants to supply a real image/chart instead.
 
-Present them as clearly labeled options (e.g. "Activity A / Activity B / Activity C") with a suggested time for each, and note that the tutor can run one, several, or swap based on how the lesson is going and how much time remains. **It's fine — expected, even — for the activities' combined time to run longer than the session length.** These are options to pick from live, not a mandatory sequence, so the tutor isn't meant to run all of them every time. Don't shrink or cut activities just to force the Production stage's total to fit the class length; a plan with more material than one session needs is more useful than one that runs out with time left over.
+Present them as clearly labeled options (e.g. "Activity A / Activity B / Activity C") — no time next to each heading; list a suggested time per activity in the Time Summary section instead — and note that the tutor can run one, several, or swap based on how the lesson is going and how much time remains. **It's fine — expected, even — for the activities' combined time to run longer than the session length.** These are options to pick from live, not a mandatory sequence, so the tutor isn't meant to run all of them every time. Don't shrink or cut activities just to force the Production stage's total to fit the class length; a plan with more material than one session needs is more useful than one that runs out with time left over.
 
 Calibrate example sentences, instructions, and reading/listening text complexity to the stated CEFR level — don't write B2-complexity examples for an A2 class.
 
@@ -213,7 +221,7 @@ Personalize using what the interview surfaced: swap generic example sentences/to
 
 ## Output format
 
-Write the plan as clean markdown with headers per stage and a timing next to each. Don't pad with generic teaching theory the teacher already knows — keep it concrete and usable at the front of a classroom.
+Write the plan as clean markdown with headers per stage — no timing in the headers themselves; all suggested timings live together in the Time Summary section (see Step 4). Don't pad with generic teaching theory the teacher already knows — keep it concrete and usable at the front of a classroom.
 
 ## Step 6: Export as a .docx (optional)
 
@@ -226,7 +234,7 @@ python3 skills/eng-teaching/scripts/md_to_docx.py <plan>.md <output>.docx
 ```
 
 If `python-docx` isn't installed, install it first (`pip install python-docx`) and retry — it's a small, standard library, not a platform-specific plugin. The script (tested end-to-end) handles `#`/`##`/`###` headings, `**bold**`/`*italic*` inline markup, `-`/numbered lists, `> ` blockquote lines (rendered indented, gray, and italic — use this for Teacher's Notes so they read as clearly separate from student-facing content), and standard markdown tables (rendered as a real Word table with a bold header row and gridlines — use this for the learning-path table). Write the source markdown accordingly:
-- Lesson title as `#`, each stage (Vocab Review, Fresh Vocabulary, Warm-up, etc.) as `##`
+- Lesson title as `#`, each stage (Vocab Review, Fresh Vocabulary, Warm Up Conversation, etc.) as `##`
 - Bold the vocab word in each `word – definition` line, italicize the example sentence
 - Prefix each Teacher's Note line with `> ` so the script styles it distinctly, whether integrated per-stage or collected at the end
 - For a learning path, write the path exactly as the `| Lesson # | ... |` markdown table already used to present it — no reformatting needed

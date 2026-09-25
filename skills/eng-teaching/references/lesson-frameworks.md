@@ -1,7 +1,7 @@
 # Lesson Frameworks
 
 ## PPP — Presentation, Practice, Production
-Best for: a single, clear grammar or vocabulary target.
+Best for: a single, clear grammar or vocabulary target. In the lesson plan itself, label this stage **Grammar Focus** rather than "Presentation" (see SKILL.md's plan structure).
 - **Presentation**: introduce the target language in context (a short text, dialogue, or situation), elicit meaning/form/pronunciation from students before explaining
 - **Practice**: controlled exercises (gap-fill, matching, drilling) where accuracy matters most
 - **Production**: freer use in speaking or writing where fluency matters more than accuracy; teacher monitors, doesn't interrupt
