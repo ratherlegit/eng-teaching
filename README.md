@@ -44,8 +44,6 @@ Most activities come from a bank of classroom-tested formats: role plays, debate
 
 ## Setting it up
 
-Most tutors will use one of the first three options below. Pick whichever matches your assistant and plan.
-
 ### Claude.ai or the Claude Desktop app (simplest option)
 
 Claude has a built-in **Plugins** feature, available on every plan including free, that installs this skill directly, no copying or uploading needed, and it'll pick up future updates automatically:
