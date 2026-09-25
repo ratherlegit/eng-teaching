@@ -63,36 +63,21 @@ Claude has a built-in **Plugins** feature, available on every plan including fre
 
 **Either way**, once it's installed, start a new chat and ask for a lesson plan, e.g. *"Plan a B1 speaking lesson for my student Maria."*
 
-This currently works on claude.ai and the Claude Desktop app. If you mainly work from the Claude mobile app, use the Projects method below instead.
-
-### Claude.ai, the Claude Desktop app, or the Claude mobile app (works everywhere, including mobile)
-
-This uses Claude's built-in **Projects** feature instead. It takes a bit more setup than Plugins above, since you're copying the instructions in by hand, but it also works on the Claude mobile app, where Plugins currently doesn't.
-
-**First, grab two things from this page:**
-
-1. **The skill's instructions.** Open [`skills/english-tutoring/SKILL.md`](skills/english-tutoring/SKILL.md). Skip the short block at the very top between the two `---` lines (that's just a technical label, not part of the instructions). Select everything below it and copy it. You'll paste this text into your assistant in a moment.
-2. **The reference files.** Click the green **Code** button near the top of [this repository's main page](https://github.com/ratherlegit/english-tutoring) and choose **Download ZIP**. Unzip the downloaded file; inside you'll find a folder at `skills/english-tutoring/references/` containing five files. You'll upload those in a moment.
-
-**Then:**
-
-1. On [claude.ai](https://claude.ai) (or in the Claude Desktop/mobile app, which use the same account), create a new **Project**, something like "English Tutoring."
-2. Open the project's settings and paste the instructions text you copied above into the **custom instructions** field.
-3. Upload the five reference files you unzipped above to the project's **knowledge** files.
-4. Start any chat inside that project and ask for a lesson plan, e.g. *"Plan a B1 speaking lesson for my student Maria."* Every chat in the project will follow the skill automatically.
-
-*If you'd rather not set up a project, the simplest path works everywhere: open a new chat, paste the instructions text at the very top of your first message, and ask your question underneath it. It's a bit more typing each time, but there's nothing to configure.*
-
 ### ChatGPT
 
-Also uses no installation, via ChatGPT's **Projects** feature (available on every ChatGPT plan, including free). If you haven't already, grab the two things described in the "First, grab two things from this page" step above (the skill's instructions and the reference files), then:
+Uses ChatGPT's **Projects** feature (available on every ChatGPT plan, including free). First, grab two things from this page:
+
+1. **The skill's instructions.** Open [`skills/english-tutoring/SKILL.md`](skills/english-tutoring/SKILL.md). Skip the short block at the very top between the two `---` lines (that's just a technical label, not part of the instructions). Select everything below it and copy it.
+2. **The reference files.** Click the green **Code** button near the top of [this repository's main page](https://github.com/ratherlegit/english-tutoring) and choose **Download ZIP**. Unzip the downloaded file; inside you'll find a folder at `skills/english-tutoring/references/` containing five files.
+
+Then:
 
 1. In ChatGPT, create a new **Project**.
 2. Open its settings and paste the instructions text you copied into the project's **instructions**.
 3. Upload the five reference files you unzipped as the project's files.
-4. Chat inside that project as normal, asking for lesson plans the same way as above.
+4. Chat inside that project as normal, asking for lesson plans, e.g. *"Plan a B1 speaking lesson for my student Maria."*
 
-The same simplest-path fallback applies here too: paste the instructions text at the top of a new chat if you'd rather skip project setup.
+If you'd rather skip project setup, the simplest path works too: open a new chat, paste the instructions text at the very top of your first message, and ask your question underneath it.
 
 ### Claude Code (technical users)
 
