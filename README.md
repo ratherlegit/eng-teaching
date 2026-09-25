@@ -61,7 +61,7 @@ Claude has a built-in **Plugins** feature, available on every plan including fre
 3. Choose **Add from a repository** and enter `ratherlegit/english-tutoring`.
 4. Once it loads, find "english-tutoring" and click **Add** to install it.
 
-**Either way**, once it's installed, start a new chat and ask for a lesson plan, e.g. *"Plan a B1 speaking lesson for my student Maria."*
+Once it's installed, type /english-tutoring to get the tool started. 
 
 ### ChatGPT
 
