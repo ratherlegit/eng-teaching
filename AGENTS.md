@@ -7,7 +7,7 @@ An ESL/EFL lesson-planning agent: interviews a tutor about a student, designs a 
 - `skills/eng-teaching/references/` — CEFR calibration, lesson frameworks, the proven activity bank, and interview rationale
 - `~/eng-teaching-records/` — where per-student profiles, learning paths, and vocab logs are read from and written to (create it if it doesn't exist). This lives outside the repo/skill directory on purpose, so it survives updates to this repo — see Step 0 in `SKILL.md`.
 
-**Step 6: Export as a .docx** works on any harness with shell access: it runs the bundled `skills/eng-teaching/scripts/md_to_docx.py` script (requires `pip install python-docx`, tested end-to-end) to convert the finished plan into a real `.docx` file — no platform-specific plugin required.
+**Step 6: Export as a .docx** works on any harness with shell access: it runs the bundled `skills/eng-teaching/scripts/md_to_docx.py` script (requires `pip install python-docx`, tested end-to-end) to convert the finished plan into a real `.docx` file — no platform-specific plugin required. In a chat-based harness where filesystem access depends on a connected folder (rather than always-on shell access), don't assume last session's connection carried over or that a script-written file will reach the tutor automatically — verify a working delivery path first (see SKILL.md's Step 6 for the full fallback flow, including delivering the file directly in the chat if no folder is connected).
 
 **Platform notes:**
 - **Codex, Aider, Cursor, Windsurf, RooCode/Cline, Gemini CLI, and other AGENTS.md-reading tools**: no setup needed — just have this repo checked out or open in the project, and follow `skills/eng-teaching/SKILL.md` as instructed above.

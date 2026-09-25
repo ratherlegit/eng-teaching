@@ -1,7 +1,7 @@
 {
   "name": "eng-teaching",
   "description": "One-on-one ESL/EFL lesson planning: tutor interview, multi-lesson learning paths, personalized vocabulary, and per-student memory.",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "author": { "name": "Zachary Rosen" },
   "homepage": "https://github.com/ratherlegit/eng-teaching",
   "repository": "https://github.com/ratherlegit/eng-teaching",
