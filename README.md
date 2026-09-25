@@ -41,6 +41,8 @@ The skill draws primarily on this proven set of activities (`skills/eng-teaching
 
 If nothing on this list fits, the skill falls back to a generic activity bank (`skills/eng-teaching/references/activity-bank.md`) organized by skill type (grammar/vocab/speaking/listening/reading/writing).
 
+Almost everything here is **generated** (dialogues, stories, scenarios, discussion questions) rather than requiring you to go find real material — "Describe a picture," "Gallery tour," and the data/charts activity default to a vivid written description or a generated data table instead of an actual photo, artwork, or chart. Only two activities (a real article, a real media clip) inherently need you to source something yourself, and the skill caps those at one per lesson at most.
+
 ## Optional: exporting to Word
 
 Exporting a lesson plan to `.docx` uses the `docx` skill from Anthropic's `document-skills` plugin (in the [`anthropics/skills`](https://github.com/anthropics/skills) repo) — it isn't bundled in this repo. Without it, the skill still works and just gives you the plan as markdown. To enable export (tested against this exact command sequence):

@@ -2,6 +2,8 @@
 
 Organized by skill focus. Pick activities that match the stated CEFR level (see cefr-levels.md) — scale complexity of language, not just the activity mechanic.
 
+Prefer activities built from generated text (dialogues, stories, transcripts, gap-fills) over ones needing the tutor to source real external material. The **Listening** activities below are the main exception — dictogloss, gap-fill-on-transcript, and song-lyrics work from a real audio source; when picking one, write a script the tutor can read aloud instead of requiring a found recording wherever that's a workable substitute. See SKILL.md's "Choosing the activities" section for the cap on externally-sourced activities per lesson.
+
 ## Grammar
 - **Warm-up**: error correction on the board (mix correct/incorrect sentences using yesterday's target), quick concept-check questions
 - **Presentation**: timeline diagrams (for tenses), context-building mini-dialogues, guided discovery from a short text
