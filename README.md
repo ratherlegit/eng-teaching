@@ -90,8 +90,6 @@ claude plugin install english-tutoring@english-tutoring
 
 Then just ask, in plain English: *"Plan a B1 speaking lesson for my student Maria."* You don't need to remember any special commands. Claude will recognize what you're asking for. (If you want to invoke it explicitly, the command is `/english-tutoring:english-tutoring`.)
 
-*If those two lines above don't mean anything to you, that's completely fine. This step just needs to be done once, and a technical friend or colleague can run those two commands for you in a couple of minutes. After that, using the skill is just a normal conversation.*
-
 ### OpenAI Codex
 
 This repo includes a file called `AGENTS.md`, which Codex reads automatically. No plugin or install step, just get the repo onto your machine and open it in Codex:
