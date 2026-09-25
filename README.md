@@ -99,7 +99,6 @@ This repo includes a file called `AGENTS.md`, which Codex reads automatically. N
    git clone https://github.com/ratherlegit/english-tutoring.git
    cd english-tutoring
    ```
-   (No git experience? Downloading the ZIP from the green "Code" button on the [GitHub page](https://github.com/ratherlegit/english-tutoring) and unzipping it works just as well.)
 2. **Open that folder in Codex** (in the terminal, `codex` from inside the `english-tutoring` folder, or open the folder in whichever Codex surface you use). Codex reads `AGENTS.md` at the project root automatically when it starts.
 3. **Just ask**, in plain English: *"Plan a B1 speaking lesson for my student Maria."* Codex will follow the instructions in `AGENTS.md`, which point it to the rest of the skill.
 4. Student records still save to `~/eng-teaching-records/` on your computer, same as every other setup here.
