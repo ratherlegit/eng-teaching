@@ -95,6 +95,7 @@ Before drafting, if not already answered for this student, ask:
 - **Number of vocab words/phrases** — how many items to include (default: 6-10 if the tutor doesn't specify)
 - **Home assignment** — whether to include a take-home assignment section (default: include, unless the tutor opts out)
 - **Teacher's notes** — pedagogical rationale, timing/pacing tips, anticipated difficulties, and alternative approaches for the tutor's own reference (not shown to the student). Ask whether these should be **integrated** throughout the plan (a short note under each relevant stage), **end-only** (a single "Teacher's Notes" section after everything else), or **not included** at all. Default: **integrated** — plenty of tutors find inline notes useful, but let anyone who doesn't want them turn them off or push them to the end
+- **Student handout** — only ask this if teacher's notes are set to integrated or end-only: whether the tutor also wants a second, notes-free version of the plan suitable for handing to the student. Default: no (skip unless asked) — this is an extra deliverable, not something to generate automatically just because notes exist
 
 These only need answering once — for a single-lesson request, ask them right away as part of getting into Step 4; for a path, ask once before generating Lesson 1, then reuse the same answers for later lessons unless the tutor wants to change something for a specific one.
 
@@ -110,6 +111,7 @@ Unless the user specifies their own format, include:
 9. **Materials needed**
 10. **Timing** for each stage — non-Production stages should sum close to the class length, but the Production stage's activity options can add up to more than what's left (see "Choosing the activities" below); that's intentional headroom, not an error
 11. **Teacher's Notes** (if not turned off — see below) — either woven into each stage or collected in one closing section, per the tutor's preference
+12. **Student Handout** (only if requested, and only possible when Teacher's Notes are on) — a second, separate notes-free copy of the plan (see below)
 
 ### Vocab Review section (recycling)
 New vocabulary that's never revisited doesn't stick. Before introducing new words, spend a few minutes recycling old ones:
@@ -137,6 +139,16 @@ These are for the tutor only — never phrase them as if speaking to the student
 - **Integrated** (default): add a brief *Teacher's note:* line (italicized or otherwise visually distinct from the student-facing content) directly under the relevant stage — e.g. a note under Fresh Vocabulary about why this constraint was chosen, or under an activity option about which one to pick if time is short
 - **End-only**: skip inline notes entirely and instead add a single "## Teacher's Notes" section as the last part of the plan, with one short bullet per stage that has something worth flagging — don't force a bullet for every stage if there's nothing useful to say
 - **Not included**: omit teacher's notes entirely — don't sneak pedagogical asides into stage descriptions instead
+
+### Student handout (optional)
+If the tutor opted in, produce a second copy of the plan after the main one, stripped of anything tutor-only:
+- Remove all Teacher's Notes, wherever they appear (inline or in the closing section)
+- Remove **Materials needed** (that's for the tutor, not the student)
+- Keep everything the student would actually see or do: Fresh Vocabulary, Warm-up, Main stage(s), Production activities, Wrap-up, Home Assignment
+- Vocab Review is fine to keep — it's a review task for the student, not a tutor-only note
+- Label it clearly (e.g. "## Student Handout — <Lesson Name>") so it's obviously the second, separate copy, not a continuation of the main plan
+
+If exporting to `.docx` (Step 6) and a handout was requested, export both as separate files rather than combining them into one document.
 
 ### Student Record File (profile, path progress, and vocab log)
 Maintain one file per student at `~/eng-teaching-records/<student-name-slug>.md` (lowercase, hyphens for spaces, e.g. `maria-garcia.md`) — **not** inside the skill's own directory (see Step 0 for why). This is the single source of truth that lets a future session say "next lesson for Mar" without re-running Step 1, and lets vocab stay genuinely new lesson over lesson. It has three parts:
@@ -209,4 +221,4 @@ A finished lesson plan is a document the tutor will print, edit, or hand to a co
 - Carry over the plan's structure directly: lesson title as the document title, each stage (Vocab Review, Fresh Vocabulary, Warm-up, etc.) as a Heading, activity options and vocab items as their own paragraphs/bullets — don't flatten everything into one undifferentiated block of text.
 - Bold the vocab word in each `word – definition` line and italicize the example sentence, so the format reads clearly on the page, not just in markdown.
 - If Teacher's Notes are included, keep them visually distinct from student-facing content (e.g. italic + a different color or a shaded/boxed paragraph), whether integrated per-stage or collected at the end.
-- Name the file `<student-name>-lesson-<n>.docx` (or `<student-name>-<lesson-name>.docx` for a single lesson) and save it in the tutor's working directory unless they ask for elsewhere.
+- Name the file `<student-name>-lesson-<n>.docx` (or `<student-name>-<lesson-name>.docx` for a single lesson) and save it in the tutor's working directory unless they ask for elsewhere. If a student handout was also requested, name it `<student-name>-lesson-<n>-handout.docx` as a separate file.
