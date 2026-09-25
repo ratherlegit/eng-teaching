@@ -227,6 +227,8 @@ Write the plan as clean markdown with headers per stage — no timing in the hea
 
 A finished lesson plan — or an approved learning path table (see Step 2) — is a document the tutor will print, edit, or hand to a co-teacher, or file away for reference, not something that only lives as chat text. After presenting either one, offer to export it as a `.docx` file the tutor can open in Word/Google Docs and edit further. Don't export automatically — only build the file once the tutor says yes (or asks for a doc/Word file/download up front).
 
+**Ask where to save it, unless the tutor has already told you a folder to use for this student or this session.** Don't assume the current working directory is where a tutor wants their files — many won't have a folder set up at all. Once they answer, reuse that location for the rest of the session (and for this student going forward, if it's worth remembering) without re-asking every time.
+
 **Default, works on any harness with shell access** (Codex, Cursor, Aider, Claude Code, etc.): write the finished plan to a markdown file, then run the bundled converter:
 
 ```bash
@@ -241,4 +243,6 @@ If `python-docx` isn't installed, install it first (`pip install python-docx`) a
 
 **On Claude Code specifically**, the `docx` skill (part of the `document-skills` plugin in the `anthropic-agent-skills` marketplace) is an alternative if it's already installed, and can produce more elaborate formatting via the docx-js API in its `docx-js.md` — but the bundled script above is the default since it needs no extra install and works identically everywhere.
 
-Name the file `<student-name>-lesson-<n>.docx` (or `<student-name>-<lesson-name>.docx` for a single lesson) and save it in the tutor's working directory unless they ask for elsewhere. If a student handout was also requested, name it `<student-name>-lesson-<n>-handout.docx` as a separate file. For a learning path table, name it `<student-name>-learning-path.docx`.
+Name the file `<student-name>-lesson-<n>.docx` (or `<student-name>-<lesson-name>.docx` for a single lesson) and save it in the location the tutor gave you (see above). If a student handout was also requested, name it `<student-name>-lesson-<n>-handout.docx` as a separate file. For a learning path table, name it `<student-name>-learning-path.docx`.
+
+**After creating any file, tell the tutor exactly where it was saved** — the full path, not just the filename. This applies to every file this skill writes: a `.docx` export, a student handout, or a record file. A tutor who doesn't know where something landed can't find or share it.

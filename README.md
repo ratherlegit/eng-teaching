@@ -54,7 +54,9 @@ pip install python-docx   # one-time, if not already installed
 python3 skills/eng-teaching/scripts/md_to_docx.py <plan>.md <output>.docx
 ```
 
-`md_to_docx.py` (tested end-to-end) converts headings, `**bold**`/`*italic*` text, bullet/numbered lists, and `> ` blockquote lines — used for Teacher's Notes, which render indented, gray, and italic so they read as clearly separate from student-facing content. Just ask for a Word/`.docx` version after any lesson plan is generated.
+`md_to_docx.py` (tested end-to-end) converts headings, `**bold**`/`*italic*` text, bullet/numbered lists, markdown tables, and `> ` blockquote lines — used for Teacher's Notes, which render indented, gray, and italic so they read as clearly separate from student-facing content. Just ask for a Word/`.docx` version after any lesson plan is generated.
+
+If you haven't already told it a folder to save files in, the skill will ask where to save before creating anything, and it'll tell you the exact path once a file is written.
 
 On Claude Code specifically, the `docx` skill from Anthropic's `document-skills` plugin (in [`anthropics/skills`](https://github.com/anthropics/skills)) is an alternative if you already have it installed, with more elaborate formatting options — but it's not required.
 
