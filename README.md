@@ -81,9 +81,23 @@ Then just ask, in plain English: *"Plan a B1 speaking lesson for my student Mari
 
 *If those two lines above don't mean anything to you, that's completely fine. This step just needs to be done once, and a technical friend or colleague can run those two commands for you in a couple of minutes. After that, using the skill is just a normal conversation.*
 
-### Other AI coding assistants
+### OpenAI Codex
 
-If you're using OpenAI Codex, Cursor, Aider, Windsurf, Gemini CLI, or several others, this repo includes a file called `AGENTS.md` that those tools read automatically. Just have this repo open in your project and ask for a lesson plan as normal. No installation step needed.
+This repo includes a file called `AGENTS.md`, which Codex reads automatically. No plugin or install step, just get the repo onto your machine and open it in Codex:
+
+1. **Get the repo onto your computer.** If you don't already have it, clone it:
+   ```
+   git clone https://github.com/ratherlegit/eng-teaching.git
+   cd eng-teaching
+   ```
+   (No git experience? Downloading the ZIP from the green "Code" button on the [GitHub page](https://github.com/ratherlegit/eng-teaching) and unzipping it works just as well.)
+2. **Open that folder in Codex** (in the terminal, `codex` from inside the `eng-teaching` folder, or open the folder in whichever Codex surface you use). Codex reads `AGENTS.md` at the project root automatically when it starts.
+3. **Just ask**, in plain English: *"Plan a B1 speaking lesson for my student Maria."* Codex will follow the instructions in `AGENTS.md`, which point it to the rest of the skill.
+4. Student records still save to `~/eng-teaching-records/` on your computer, same as every other setup here.
+
+### Cursor, Aider, Windsurf, Gemini CLI, and others
+
+These also read `AGENTS.md` automatically, the same way Codex does. Have this repo open in your project (cloned or downloaded, as above) and ask for a lesson plan as normal. No installation step needed.
 
 ## Getting your lesson plan as a Word document
 
