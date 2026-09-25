@@ -46,27 +46,34 @@ Most activities come from a bank of classroom-tested formats: role plays, debate
 
 Most tutors will use one of the first two options below. Pick whichever assistant you already have.
 
+**Whichever one you use, first grab two things from this page:**
+
+1. **The skill's instructions.** Open [`skills/english-tutoring/SKILL.md`](skills/english-tutoring/SKILL.md). Skip the short block at the very top between the two `---` lines (that's just a technical label, not part of the instructions). Select everything below it and copy it. You'll paste this text into your assistant in a moment.
+2. **The reference files.** Click the green **Code** button near the top of [this repository's main page](https://github.com/ratherlegit/english-tutoring) and choose **Download ZIP**. Unzip the downloaded file; inside you'll find a folder at `skills/english-tutoring/references/` containing five files. You'll upload those in a moment.
+
+Keep both handy, then follow whichever section below matches your assistant.
+
 ### Claude.ai, the Claude Desktop app, or the Claude mobile app (most tutors)
 
 No installation. This uses Claude's built-in **Projects** feature, which is available on every Claude plan, including free:
 
 1. On [claude.ai](https://claude.ai) (or in the Claude Desktop/mobile app, which use the same account), create a new **Project**, something like "English Tutoring."
-2. Open the project's settings and paste the contents of [`skills/english-tutoring/SKILL.md`](skills/english-tutoring/SKILL.md) into the **custom instructions** field.
-3. Upload the files inside [`skills/english-tutoring/references/`](skills/english-tutoring/references/) to the project's **knowledge** files.
+2. Open the project's settings and paste the instructions text you copied above into the **custom instructions** field.
+3. Upload the five reference files you unzipped above to the project's **knowledge** files.
 4. Start any chat inside that project and ask for a lesson plan, e.g. *"Plan a B1 speaking lesson for my student Maria."* Every chat in the project will follow the skill automatically.
 
-*If you'd rather not set up a project, the simplest path works everywhere: open a new chat, paste the contents of `SKILL.md` at the very top of your first message, and ask your question underneath it. It's a bit more typing each time, but there's nothing to configure.*
+*If you'd rather not set up a project, the simplest path works everywhere: open a new chat, paste the instructions text at the very top of your first message, and ask your question underneath it. It's a bit more typing each time, but there's nothing to configure.*
 
 ### ChatGPT
 
 Also uses no installation, via ChatGPT's **Projects** feature (available on every ChatGPT plan, including free):
 
 1. In ChatGPT, create a new **Project**.
-2. Open its settings and paste the contents of `skills/english-tutoring/SKILL.md` into the project's **instructions**.
-3. Upload the files inside `skills/english-tutoring/references/` as the project's files.
+2. Open its settings and paste the instructions text you copied above into the project's **instructions**.
+3. Upload the five reference files you unzipped above as the project's files.
 4. Chat inside that project as normal, asking for lesson plans the same way as above.
 
-The same simplest-path fallback applies here too: paste `SKILL.md`'s contents at the top of a new chat if you'd rather skip project setup.
+The same simplest-path fallback applies here too: paste the instructions text at the top of a new chat if you'd rather skip project setup.
 
 ### Claude Code (technical users)
 
@@ -105,7 +112,7 @@ Just ask. After any lesson plan is generated, say something like *"can I get tha
 
 **On Claude Code or another coding assistant**, it'll ask where you'd like the file saved (if it doesn't already know), then hand you a real `.docx` file you can open, mark up, and reshape however you'd like. If a student handout was made too, that comes as its own separate file. It'll always tell you exactly where the file ended up, or share it directly in the chat if there's nowhere else to put it.
 
-**On Claude.ai, the Claude apps, or ChatGPT without code execution enabled**, there's no way for the assistant to run our export script directly, so ask it to format the plan so it pastes cleanly, then copy it straight into Word or Google Docs; the headings, bold text, and lists carry over well. If your ChatGPT plan has Python/code execution available, you can instead ask it to run the same conversion approach we use elsewhere in this repo.
+**On Claude.ai, the Claude apps, or ChatGPT without code execution enabled**, there's no way for the assistant to build an actual `.docx` file, so ask it to clean up the formatting instead, e.g. *"Format that as clean text I can paste into Word."* Then select all the text in the reply, copy it, and paste it into a new Word or Google Docs document; the headings, bold text, and lists carry over well. If your ChatGPT plan has Python/code execution available, you can instead ask it to run the same conversion approach we use elsewhere in this repo.
 
 ## Where your student's information is kept
 
