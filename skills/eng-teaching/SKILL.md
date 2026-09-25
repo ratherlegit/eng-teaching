@@ -101,6 +101,8 @@ Before drafting, if not already answered for this student, ask:
 
 These only need answering once — for a single-lesson request, ask them right away as part of getting into Step 4; for a path, ask once before generating Lesson 1, then reuse the same answers for later lessons unless the tutor wants to change something for a specific one.
 
+**Don't open the plan with a student-details or framework header** (e.g. a block restating the student's name/level/interests, or naming the PPP/TBL/ESA framework being used) — that's internal planning context, not something the tutor needs printed at the top of a document they'll use in front of a student. Start straight in with the lesson content.
+
 Unless the user specifies their own format, include:
 1. **Objective(s)** — a can-do statement ("Students will be able to...")
 2. **Vocab Review** (only from Lesson 2 of a path onward, or any returning student) — see below
@@ -125,7 +127,7 @@ New vocabulary that's never revisited doesn't stick. Before introducing new word
 - Skip this section for a student's first-ever lesson (nothing to review yet)
 
 ### Warm Up Conversation section
-Not a lesson-topic teaser — a short, genuine check-in on the student's life, to build rapport before the lesson content starts. Include 2-3 open-ended questions about what's actually going on for them, in the spirit of "Any highlights from your week?" and "Anything you're looking forward to in the next couple of weeks?" — **write fresh questions for every lesson** (never repeat the same wording lesson to lesson) and vary the angle (week just past, week ahead, a specific interest they mentioned, a follow-up on something from a prior lesson if the record file shows one worth revisiting).
+Not a lesson-topic teaser — a short, genuine check-in on the student's life, to build rapport before the lesson content starts. Include 2-3 open-ended questions about what's actually going on for them, in the spirit of "Any highlights from your week?" and "Anything you're looking forward to in the next couple of weeks?" — **write fresh questions for every lesson** (never repeat the same wording lesson to lesson) and vary the angle (week just past, week ahead, a specific interest they mentioned, a follow-up on something from a prior lesson if the record file shows one worth revisiting). Format the questions as a bulleted list, not a paragraph — this is the format to carry into the Student Handout too (see below).
 
 ### Fresh Vocabulary section
 Every lesson gets a standalone new-vocabulary section, not just vocab folded into the presentation stage:
@@ -151,12 +153,14 @@ These are for the tutor only — never phrase them as if speaking to the student
 - **Not included**: omit teacher's notes entirely — don't sneak pedagogical asides into stage descriptions instead
 
 ### Student handout (optional)
-If the tutor opted in, produce a second copy of the plan after the main one, stripped of anything tutor-only. This is meant to be genuinely export-ready to hand or send straight to the student — not a copy with a visible note about what got removed:
-- Remove all Teacher's Notes, wherever they appear (inline or in the closing section)
-- Remove **Materials needed** and the **Time Summary** (both are for the tutor, not the student)
-- Keep everything the student would actually see or do: Fresh Vocabulary, Warm Up Conversation, Grammar Focus, Production activities, Wrap-up, Home Assignment
-- Vocab Review is fine to keep — it's a review task for the student, not a tutor-only note
-- Label it plainly with just the lesson name (e.g. "## <Lesson Name> — Student Handout") — **don't** add any parenthetical or caption describing what was stripped out (e.g. never write something like "(Teacher's notes and Materials removed)"); the student should never see a trace of what the tutor-only version contained
+If the tutor opted in, produce a second copy of the plan after the main one. **The handout is the same document — same content, same wording, same formatting — minus exactly three things:**
+- All Teacher's Notes, wherever they appear (inline or in the closing section)
+- **Materials needed**
+- **Time Summary**
+
+Nothing else changes. Every other section carries over as-is: Vocab Review, Fresh Vocabulary, Warm Up Conversation (including its bulleted questions, unchanged), Grammar Focus, every Production activity's full instructions, Wrap-up, Home Assignment. Since activity instructions are already written addressed to the student (see "Choosing the activities" above), there's no rephrasing to do — copy the content over and delete only the three tutor-only sections.
+
+Label it plainly with just the lesson name (e.g. "## <Lesson Name> — Student Handout") — **don't** add any parenthetical or caption describing what was stripped out (e.g. never write something like "(Teacher's notes and Materials removed)"); the student should never see a trace of what the tutor-only version contained.
 
 If exporting to `.docx` (Step 6) and a handout was requested, export both as separate files rather than combining them into one document.
 
@@ -209,6 +213,8 @@ Include **2-3 activities** in the Production/application stage, not a single fix
 
 Present them as clearly labeled options (e.g. "Activity A / Activity B / Activity C") — no time next to each heading; list a suggested time per activity in the Time Summary section instead — and note that the tutor can run one, several, or swap based on how the lesson is going and how much time remains. **It's fine — expected, even — for the activities' combined time to run longer than the session length.** These are options to pick from live, not a mandatory sequence, so the tutor isn't meant to run all of them every time. Don't shrink or cut activities just to force the Production stage's total to fit the class length; a plan with more material than one session needs is more useful than one that runs out with time left over.
 
+**Write every activity's instructions addressed to the student, in the second person** (e.g. "Read the dialogue below and discuss..." or "Rank these options from most to least important..."), not as stage directions to the tutor (e.g. not "Have the student read the dialogue and discuss..."). This applies throughout the plan — Warm Up Conversation questions, Grammar Focus practice, and every Production activity — not just the handout, since the handout is meant to be the same content minus the tutor-only sections (see below).
+
 Calibrate example sentences, instructions, and reading/listening text complexity to the stated CEFR level — don't write B2-complexity examples for an A2 class.
 
 Personalize using what the interview surfaced: swap generic example sentences/topics for ones tied to the student's stated interests, profession, and specific location/hometown (real place names, regional references — not generic "Europe"/"Asia" framing), and pick discussion/reading topics that fit their goal (e.g. workplace scenarios for a business-goal student, campus/exam scenarios for an academic one). Using their location, silently check `references/student-interview.md`'s L1-interference notes and pre-empt the most likely error rather than waiting for it to surface — this stays a background input to your planning, not something stated back to the tutor.
@@ -222,6 +228,8 @@ Personalize using what the interview surfaced: swap generic example sentences/to
 ## Output format
 
 Write the plan as clean markdown with headers per stage — no timing in the headers themselves; all suggested timings live together in the Time Summary section (see Step 4). Don't pad with generic teaching theory the teacher already knows — keep it concrete and usable at the front of a classroom.
+
+**Never use an em dash (—) in narrative/body text, in any output this skill produces** (lesson plans, handouts, learning paths, teacher's notes, interview questions, record files, chat responses — everything). Em dashes read as a giveaway of AI-generated writing, and this skill's whole point is realistic, human-feeling content. Use a period, comma, colon, or parentheses instead, or just rephrase as two sentences. The only place an em dash is acceptable is as a formatting separator in a heading or label (e.g. "## Lesson 3 — Weekend Plans," "## <Lesson Name> — Student Handout") or in a vocab item's `word – definition` line — and that vocab-item dash should be an en dash (–), not an em dash, per the Fresh Vocabulary format below. When in doubt, don't use one.
 
 ## Step 6: Export as a .docx (optional)
 
