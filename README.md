@@ -8,7 +8,7 @@ An AI agent skill for one-on-one English (ESL/EFL) tutors, usable with Claude Co
 - **Designs a learning path**: a lesson-by-lesson table (theme, grammar point, activities) that varies grammar and activities across the path and weights activities toward whatever skill the tutor wants to prioritize (e.g. speaking fluency)
 - **Generates lesson plans** with a standard structure: objectives, vocab review (recycling older words), fresh vocabulary (pitched one level above the student, personalized to their interests), warm-up, presentation/practice, 2-3 production activities to choose from, wrap-up, a home assignment (included by default, opt-out), and teacher's notes (integrated by default — pick end-only or off instead)
 - **Optional student handout**: if teacher's notes are on, you can ask for a second, notes-free copy of the plan to hand directly to the student
-- **Remembers each student** in a plain-text record file — so asking for "the next lesson for Mar" in a brand-new session picks up exactly where you left off, without re-running the interview
+- **Remembers each student** in a plain-text record file — so asking for "the next lesson for [student name]" in a brand-new session picks up exactly where you left off, without re-running the interview
 - **Never repeats vocabulary** already taught to a student, and recycles older vocab into new lessons for retention
 - **Draws on a bank of proven activities** (`skills/eng-teaching/references/teacher-activities.md`) — role plays, debates, gallery tours, press conferences, and more — plus a generic fallback bank for anything that doesn't fit
 - **Exports a finished lesson plan as a `.docx`** on request — a lesson plan is a document you print, edit, or hand to a co-teacher, not just chat text
@@ -84,7 +84,7 @@ Once installed, plugin skills are namespaced as `/plugin-name:skill-name` (confi
 /eng-teaching:eng-teaching
 ```
 
-or just ask Claude to plan an English lesson (e.g. "plan a B1 speaking lesson for my student Mar") — the skill's description is written to trigger automatically on relevant requests too.
+or just ask Claude to plan an English lesson (e.g. "plan a B1 speaking lesson for my student [student name]") — the skill's description is written to trigger automatically on relevant requests too.
 
 ## Where student data lives
 

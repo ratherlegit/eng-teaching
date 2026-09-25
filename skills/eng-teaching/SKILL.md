@@ -11,14 +11,14 @@ Build classroom-ready English lesson plans for ESL/EFL learners. Adapt structure
 
 ## Step 0: Check for a returning student
 
-Before interviewing anyone, check whether the tutor is naming a student you already have a record for — e.g. "give me the next lesson for Mar," or any request naming a student by name. Look for `~/eng-teaching-records/<name-slug>.md` (lowercase, hyphens for spaces).
+Before interviewing anyone, check whether the tutor is naming a student you already have a record for — e.g. "give me the next lesson for [student name]," or any request naming a student by name. Look for `~/eng-teaching-records/<name-slug>.md` (lowercase, hyphens for spaces).
 
 **Records live outside the skill's own folder, at `~/eng-teaching-records/`, not inside `~/.claude/skills/eng-teaching/`.** This is deliberate: a student's profile, path, and vocab history are personal data that must survive skill updates, reinstalls, or repackaging — they must never be at risk of being wiped out along with the skill's own files. Create `~/eng-teaching-records/` if it doesn't exist yet.
 
 - **If a record exists**: skip Step 1 entirely — do not re-run the interview. Load the student's profile, learning path (if any), and vocab log straight from that file. Ask only a brief check-in: whether anything's changed (interests, exclusions, session length, etc.) and, if there's an active path, confirm you're generating the next undelivered lesson (the record tracks this — don't ask the tutor to specify a lesson number). Then go straight to Step 3/4 to build that lesson.
 - **If no record exists** for that name, or this is the first time this student is mentioned: run the full Step 1 interview as normal, then create the record at the end of Step 1 (and update it after Step 2/4, per the Student Record File section below).
 
-This is what makes "next lesson for Mar" work in a brand-new session without re-asking her level, interests, goal, or path from scratch.
+This is what makes "next lesson for [student name]" work in a brand-new session without re-asking their level, interests, goal, or path from scratch.
 
 ## Step 1: Interview the tutor
 
@@ -77,7 +77,7 @@ Rules for building the path:
 
 **Do not generate any lesson plans immediately after presenting the path.** After sharing the path table, ask the tutor whether they'd like any adjustments to it, or would like Lesson 1 generated. Only proceed to Step 3/4 for Lesson 1 once they say so — never generate the whole path's lessons in one go, and never generate even Lesson 1 before this check-in. Once Lesson 1 is delivered, ask before generating the next one, following Steps 3-4 for each using that lesson's row as the spec (theme, grammar point, activity type) rather than re-deciding those from scratch.
 
-Once the tutor approves the path (even before any lesson is generated), save it into the student's record file (see Step 4's Student Record File section) with a Status column (all rows start "Not yet delivered"). This is what lets a future session pick up with "next lesson for Mar" without the path having to be re-designed or re-approved.
+Once the tutor approves the path (even before any lesson is generated), save it into the student's record file (see Step 4's Student Record File section) with a Status column (all rows start "Not yet delivered"). This is what lets a future session pick up with "next lesson for [student name]" without the path having to be re-designed or re-approved.
 
 ## Step 3: Pick a framework
 
@@ -151,7 +151,7 @@ If the tutor opted in, produce a second copy of the plan after the main one, str
 If exporting to `.docx` (Step 6) and a handout was requested, export both as separate files rather than combining them into one document.
 
 ### Student Record File (profile, path progress, and vocab log)
-Maintain one file per student at `~/eng-teaching-records/<student-name-slug>.md` (lowercase, hyphens for spaces, e.g. `maria-garcia.md`) — **not** inside the skill's own directory (see Step 0 for why). This is the single source of truth that lets a future session say "next lesson for Mar" without re-running Step 1, and lets vocab stay genuinely new lesson over lesson. It has three parts:
+Maintain one file per student at `~/eng-teaching-records/<student-name-slug>.md` (lowercase, hyphens for spaces, e.g. `maria-garcia.md`) — **not** inside the skill's own directory (see Step 0 for why). This is the single source of truth that lets a future session say "next lesson for [student name]" without re-running Step 1, and lets vocab stay genuinely new lesson over lesson. It has three parts:
 
 ```
 # Student Record — <Name>
