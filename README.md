@@ -1,4 +1,4 @@
-# eng-teaching
+# english-tutoring
 
 **A planning assistant for one-on-one English tutors.** Tell it about your student once, and it interviews you, drafts a personalized lesson (or a whole multi-lesson course), and remembers everything for next time, so you spend your prep time refining a strong starting point instead of building one from a blank page.
 
@@ -51,8 +51,8 @@ Most tutors will use one of the first two options below. Pick whichever assistan
 No installation. This uses Claude's built-in **Projects** feature, which is available on every Claude plan, including free:
 
 1. On [claude.ai](https://claude.ai) (or in the Claude Desktop/mobile app, which use the same account), create a new **Project**, something like "English Tutoring."
-2. Open the project's settings and paste the contents of [`skills/eng-teaching/SKILL.md`](skills/eng-teaching/SKILL.md) into the **custom instructions** field.
-3. Upload the files inside [`skills/eng-teaching/references/`](skills/eng-teaching/references/) to the project's **knowledge** files.
+2. Open the project's settings and paste the contents of [`skills/english-tutoring/SKILL.md`](skills/english-tutoring/SKILL.md) into the **custom instructions** field.
+3. Upload the files inside [`skills/english-tutoring/references/`](skills/english-tutoring/references/) to the project's **knowledge** files.
 4. Start any chat inside that project and ask for a lesson plan, e.g. *"Plan a B1 speaking lesson for my student Maria."* Every chat in the project will follow the skill automatically.
 
 *If you'd rather not set up a project, the simplest path works everywhere: open a new chat, paste the contents of `SKILL.md` at the very top of your first message, and ask your question underneath it. It's a bit more typing each time, but there's nothing to configure.*
@@ -62,8 +62,8 @@ No installation. This uses Claude's built-in **Projects** feature, which is avai
 Also uses no installation, via ChatGPT's **Projects** feature (available on every ChatGPT plan, including free):
 
 1. In ChatGPT, create a new **Project**.
-2. Open its settings and paste the contents of `skills/eng-teaching/SKILL.md` into the project's **instructions**.
-3. Upload the files inside `skills/eng-teaching/references/` as the project's files.
+2. Open its settings and paste the contents of `skills/english-tutoring/SKILL.md` into the project's **instructions**.
+3. Upload the files inside `skills/english-tutoring/references/` as the project's files.
 4. Chat inside that project as normal, asking for lesson plans the same way as above.
 
 The same simplest-path fallback applies here too: paste `SKILL.md`'s contents at the top of a new chat if you'd rather skip project setup.
@@ -74,10 +74,10 @@ If you use Claude Code, the AI assistant that runs in a terminal/command line, t
 
 ```
 claude plugin marketplace add ratherlegit/eng-teaching
-claude plugin install eng-teaching@eng-teaching
+claude plugin install english-tutoring@english-tutoring
 ```
 
-Then just ask, in plain English: *"Plan a B1 speaking lesson for my student Maria."* You don't need to remember any special commands. Claude will recognize what you're asking for. (If you want to invoke it explicitly, the command is `/eng-teaching:eng-teaching`.)
+Then just ask, in plain English: *"Plan a B1 speaking lesson for my student Maria."* You don't need to remember any special commands. Claude will recognize what you're asking for. (If you want to invoke it explicitly, the command is `/english-tutoring:english-tutoring`.)
 
 *If those two lines above don't mean anything to you, that's completely fine. This step just needs to be done once, and a technical friend or colleague can run those two commands for you in a couple of minutes. After that, using the skill is just a normal conversation.*
 
@@ -125,7 +125,7 @@ eng-teaching/
 │   ├── plugin.json                   # plugin manifest (Claude Code)
 │   └── marketplace.json              # marketplace manifest (Claude Code)
 └── skills/
-    └── eng-teaching/
+    └── english-tutoring/
         ├── SKILL.md                  # the skill's instructions
         ├── scripts/
         │   └── md_to_docx.py          # harness-agnostic markdown -> .docx converter
@@ -140,12 +140,12 @@ eng-teaching/
 **Local development/testing** (working on a clone of this repo):
 ```bash
 claude plugin marketplace add /path/to/local/eng-teaching
-claude plugin install eng-teaching@eng-teaching
+claude plugin install english-tutoring@english-tutoring
 ```
 
-**The `.docx` export** runs `python3 skills/eng-teaching/scripts/md_to_docx.py <plan>.md <output>.docx` (requires `pip install python-docx`). It converts markdown headings, bold/italic text, bullet/numbered lists, tables, and `> ` blockquote lines (used for Teacher's Notes, rendered indented/gray/italic) into a real `.docx`. Works identically on any harness with shell access (Codex, Cursor, Aider, Claude Code, etc.), no plugin install needed. On Claude Code specifically, Anthropic's `docx` skill (from the `document-skills` plugin in [`anthropics/skills`](https://github.com/anthropics/skills)) is an alternative if already installed, with more elaborate formatting via docx-js, but the bundled script is the default since it needs no extra install.
+**The `.docx` export** runs `python3 skills/english-tutoring/scripts/md_to_docx.py <plan>.md <output>.docx` (requires `pip install python-docx`). It converts markdown headings, bold/italic text, bullet/numbered lists, tables, and `> ` blockquote lines (used for Teacher's Notes, rendered indented/gray/italic) into a real `.docx`. Works identically on any harness with shell access (Codex, Cursor, Aider, Claude Code, etc.), no plugin install needed. On Claude Code specifically, Anthropic's `docx` skill (from the `document-skills` plugin in [`anthropics/skills`](https://github.com/anthropics/skills)) is an alternative if already installed, with more elaborate formatting via docx-js, but the bundled script is the default since it needs no extra install.
 
-**Cross-harness support**: the actual instructions in `skills/eng-teaching/SKILL.md` are plain markdown with no Claude-specific syntax. `AGENTS.md` is a real, widely-adopted convention (see [agents.md](https://agents.md)) read automatically by OpenAI Codex, Cursor, Aider, Windsurf, Gemini CLI, RooCode/Cline, and others.
+**Cross-harness support**: the actual instructions in `skills/english-tutoring/SKILL.md` are plain markdown with no Claude-specific syntax. `AGENTS.md` is a real, widely-adopted convention (see [agents.md](https://agents.md)) read automatically by OpenAI Codex, Cursor, Aider, Windsurf, Gemini CLI, RooCode/Cline, and others.
 
 Currently scoped to **one-on-one tutoring only**; group classes are intentionally out of scope (see `SKILL.md`).
 

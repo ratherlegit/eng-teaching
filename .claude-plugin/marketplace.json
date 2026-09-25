@@ -1,14 +1,14 @@
 {
   "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
-  "name": "eng-teaching",
-  "version": "1.6.1",
+  "name": "english-tutoring",
+  "version": "1.7.0",
   "description": "One-on-one ESL/EFL lesson planning: tutor interview, multi-lesson learning paths, personalized vocabulary, and per-student memory.",
   "owner": {
     "name": "Zachary Rosen"
   },
   "plugins": [
     {
-      "name": "eng-teaching",
+      "name": "english-tutoring",
       "description": "One-on-one ESL/EFL lesson planning: tutor interview, multi-lesson learning paths, personalized vocabulary, and per-student memory.",
       "source": "./",
       "category": "education"

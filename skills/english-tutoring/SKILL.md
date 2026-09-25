@@ -1,5 +1,5 @@
 ---
-name: eng-teaching
+name: english-tutoring
 description: Develops lesson plans for teaching English to ESL/EFL learners (non-native speakers, general English or exam prep). Use when the user asks to create, draft, or plan an English lesson, class, or unit — e.g. "write a lesson plan for present perfect", "plan a B1 speaking class", "I need a 45-minute ESL lesson on phrasal verbs", or "help me teach conditionals to intermediate students". Covers grammar, vocabulary, speaking, listening, reading, and writing lessons across CEFR levels A1-C2, and can build single lessons or multi-lesson units.
 ---
 
@@ -13,7 +13,7 @@ Build classroom-ready English lesson plans for ESL/EFL learners. Adapt structure
 
 Before interviewing anyone, check whether the tutor is naming a student you already have a record for — e.g. "give me the next lesson for [student name]," or any request naming a student by name. Look for `~/eng-teaching-records/<name-slug>.md` (lowercase, hyphens for spaces).
 
-**Records live outside the skill's own folder, at `~/eng-teaching-records/`, not inside `~/.claude/skills/eng-teaching/`.** This is deliberate: a student's profile, path, and vocab history are personal data that must survive skill updates, reinstalls, or repackaging — they must never be at risk of being wiped out along with the skill's own files. Create `~/eng-teaching-records/` if it doesn't exist yet.
+**Records live outside the skill's own folder, at `~/eng-teaching-records/`, not inside `~/.claude/skills/english-tutoring/`.** This is deliberate: a student's profile, path, and vocab history are personal data that must survive skill updates, reinstalls, or repackaging — they must never be at risk of being wiped out along with the skill's own files. Create `~/eng-teaching-records/` if it doesn't exist yet.
 
 - **If a record exists**: skip Step 1 entirely — do not re-run the interview. Load the student's profile, learning path (if any), and vocab log straight from that file. Ask only a brief check-in: whether anything's changed (interests, exclusions, session length, etc.).
   - **If there's an active learning path**: remind the tutor what's next (the next "Not yet delivered" row: lesson name, theme, grammar point) and confirm that's still what they want before generating it — don't just assume the path is unchanged. Give them the chance to request something different for this lesson (a different theme, a specific activity, skip ahead, etc.) instead of only offering yes/no.
@@ -250,7 +250,7 @@ A finished lesson plan — or an approved learning path table (see Step 2) — i
 **Default, works on any harness with shell access** (Codex, Cursor, Aider, Claude Code, etc.): write the finished plan to a markdown file, then run the bundled converter:
 
 ```bash
-python3 skills/eng-teaching/scripts/md_to_docx.py <plan>.md <output>.docx
+python3 skills/english-tutoring/scripts/md_to_docx.py <plan>.md <output>.docx
 ```
 
 If `python-docx` isn't installed, install it first (`pip install python-docx`) and retry — it's a small, standard library, not a platform-specific plugin. The script (tested end-to-end) handles `#`/`##`/`###` headings, `**bold**`/`*italic*` inline markup, `-`/numbered lists, `> ` blockquote lines (rendered indented, gray, and italic — use this for Teacher's Notes so they read as clearly separate from student-facing content), and standard markdown tables (rendered as a real Word table with a bold header row and gridlines — use this for the learning-path table). Write the source markdown accordingly:
